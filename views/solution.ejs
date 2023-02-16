@@ -1,0 +1,57 @@
+<%- include('./includes/head.ejs') %>
+
+    <div class="center">
+        <h1 class="headings">ROUND ROBIN</h1>
+    </div>
+
+    <div class="container">
+
+        <form action="/round-robin" method="POST">
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Process ID</th>
+                        <th scope="col">Arrival Time</th>
+                        <th scope="col">Burst Time</th>
+                        <th scope="col">Completion Time</th>
+                        <th scope="col">Turn Around Time</th>
+                        <th scope="col">Waiting Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let count = 0; %>
+                    <% let total_tat = 0; %>
+                    <% let total_wt = 0; %>
+                    <% for (var i = 0; i < arr.length; i++) { %>
+                        <% total_tat = total_tat + arr[i].tat; %>
+                        <% total_wt = total_tat + arr[i].wt; %>
+                        <% count++ %>
+                        <tr>
+                            <td name="pId" id="pId"> <%= arr[i].id %> </td>
+                            <td name="at" id="at"><%= arr[i].at %> </td>
+                            <td name="bt" id="bt"><%= arr[i].bt %> </td>
+                            <td name="bt" id="bt"><%= arr[i].ct %> </td>
+                            <td name="tat" id="tat"><%= arr[i].tat %> </td>
+                            <td name="wt" id="wt"><%= arr[i].wt %> </td>
+                        </tr>
+                        <% } %>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    <th scope="col">Time Taken</th>
+                    <td name="time" id="time"><%= time %> </td>
+                    <th scope="col">Average Turn Around Time</th>
+                    <td name="avg_tat"><%= total_tat / count %> </td>
+                    <th scope="col">Average Waiting Time</th>
+                    <td name="avg_tat"><%= total_wt / count %> </td>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <%- include('./includes/end.ejs') %>

@@ -1,0 +1,33 @@
+header {
+    /* position: fixed; */
+    /* top:0; */
+    width: 100%;
+    margin-top: 50px;
+}
+body {
+    background: #2e8bc0;
+    font-family: "Nunito", sans-serif;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+}
+
+#mainNavbar .navbar-brand {
+    color: #ff017f;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+#mainNavbar {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 100;
+    padding: 0 16px;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: #ff017f;
+}

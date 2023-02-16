@@ -1,0 +1,69 @@
+<%- include('./includes/head.ejs') %>
+
+    <div class="center">
+        <h1 class="headings">ROUND ROBIN</h1>
+    </div>
+
+    <div class="container">
+
+        <form action="/round-robin" method="POST">
+            Enter Quantum<input type="number" name="quantum" id="quantum" placeholder="Quantum">
+            <table class="table table-striped table-dark" id="myTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Process ID</th>
+                        <th scope="col">Arrival Time</th>
+                        <th scope="col">Burst Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> <input type="number" name="pId" id="pId"></td>
+                        <td> <input type="number" name="at" id="at"></td>
+                        <td> <input type="number" name="bt" id="bt"></td>
+                        <td><button onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="center">
+                <button type="submit" class="b1">Calculate</button>
+            </div>
+        </form>
+
+        <div class="center">
+            <button class="b1" onclick="addRow()"> Add Row </button>
+        </div>
+
+        <script>
+            function addRow() {
+                var table = document.getElementById("myTable");
+                var newRow = table.insertRow(-1); // Add row at the end
+                var pIdCell = newRow.insertCell(0);
+                var atCell = newRow.insertCell(1);
+                var btCell = newRow.insertCell(2);
+                var buttonCell = newRow.insertCell(3);
+                pIdCell.innerHTML = '<input type="text" name="pId" value="">';
+                atCell.innerHTML = '<input type="text" name="at" value="">';
+                btCell.innerHTML = '<input type="text" name="bt" value="">';
+                var deleteButton = document.createElement("button");
+                deleteButton.innerHTML = "Delete";
+                deleteButton.onclick = function () {
+                    deleteRow(this);
+                };
+                buttonCell.appendChild(deleteButton);
+            }
+
+            function deleteRow(btn) {
+                var row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        </script>
+
+        <!-- newCell1.innerHTML = '<input type="text" name="pId" value="">';
+        newCell2.innerHTML = '<input type="text" name="at" value="">';
+        newCell3.innerHTML = '<input type="text" name="bt" value="">'; -->
+
+    </div>
+
+    <%- include('./includes/end.ejs') %>
