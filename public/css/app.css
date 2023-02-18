@@ -42,11 +42,13 @@ header {
     font-weight: 150;
     font-size: 5rem;
 }
+
 .headings {
     color: white;
     font-weight: 150;
     font-size: 5rem;
 }
+
 .text .subHeadings {
     color: white;
     font-weight: 100;
@@ -57,25 +59,29 @@ header {
     .text .headings {
         font-size: 3rem;
     }
+
     .text .subHeadings {
         font-size: 2rem;
     }
+
     #img1 {
         padding: 0;
         left: 0;
     }
+
     .landingImage {
         margin: 0;
         padding: 0;
         width: 100vw;
     }
-    .landingVideo{
+
+    .landingVideo {
         width: 950px !important
     }
 }
 
-@media (max-width:950px){
-    .landingVideo{
+@media (max-width:950px) {
+    .landingVideo {
         width: 800px !important;
         margin-left: 6%;
     }
@@ -85,10 +91,12 @@ header {
     .para {
         margin-bottom: 100px;
     }
+
     #img1 {
         padding: 0;
     }
-    .landingVideo{
+
+    .landingVideo {
         width: 700px !important
     }
 }
@@ -136,33 +144,40 @@ header {
 p {
     font-weight: 500;
 }
+
 a:link {
     text-decoration: none;
-} 
+}
+
 a:active {
     text-decoration: none;
 }
+
 a:visited {
     text-decoration: none;
 }
+
 a:hover {
     text-decoration: none;
 }
-a { color: inherit; } 
 
-.b1{
+a {
+    color: inherit;
+}
+
+.b1 {
     /* font-family: "Nunito", sans-serif; */
     font-size: 25px;
-    border:none;
-    background:transparent;
-    color:white;
+    border: none;
+    background: transparent;
+    color: white;
 }
 
-.b1:hover{
-    color:#FF017F;
+.b1:hover {
+    color: #FF017F;
 }
 
-.subHeadings :hover{
+.subHeadings :hover {
     color: #FF017F;
 }
 
@@ -171,10 +186,20 @@ a { color: inherit; }
     right: -12px;
     top: 0;
 }
+
 .firstDiv {
     margin-top: 200px;
 }
-.landingImage{
+
+.landingImage {
     height: 100vh;
     object-fit: cover;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
 }

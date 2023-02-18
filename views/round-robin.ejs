@@ -6,21 +6,24 @@
 
     <div class="container">
 
-        <form action="/round-robin" method="POST">
-            Enter Quantum<input type="number" name="quantum" id="quantum" placeholder="Quantum">
+
+
+        <form action="/round-robin" method="POST" id="myForm">
+            Enter Quantum<input type="number" name="quantum" id="quantum" placeholder="Quantum" required="required">
             <table class="table table-striped table-dark" id="myTable">
                 <thead>
                     <tr>
                         <th scope="col">Process ID</th>
                         <th scope="col">Arrival Time</th>
                         <th scope="col">Burst Time</th>
+                        <th scope="col">Delete Row</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td> <input type="number" name="pId" id="pId"></td>
-                        <td> <input type="number" name="at" id="at"></td>
-                        <td> <input type="number" name="bt" id="bt"></td>
+                        <td> <input type="number" name="pId" id="pId" required="required"></td>
+                        <td> <input type="number" name="at" id="at" required="required"></td>
+                        <td> <input type="number" name="bt" id="bt" required="required"></td>
                         <td><button onclick="deleteRow(this)">Delete</button></td>
                     </tr>
                 </tbody>
@@ -32,10 +35,25 @@
         </form>
 
         <div class="center">
-            <button class="b1" onclick="addRow()"> Add Row </button>
+            <button class="b1" type="button" onclick="addRow()"> Add Row </button>
         </div>
 
         <script>
+
+            // the logic for when if there is only one row you cannot submit the form.
+            var form = document.getElementById("myForm");
+            form.addEventListener("submit", function (event) {
+                var table = document.getElementById("myTable");
+                if (table.rows.length <= 2) {
+                    alert("You must enter at least two processes to calculate.");
+                    event.preventDefault(); // prevent form submission
+                }
+            });
+
+
+
+
+            // the logic for adding a row and the logic for delete row button
             function addRow() {
                 var table = document.getElementById("myTable");
                 var newRow = table.insertRow(-1); // Add row at the end
@@ -60,10 +78,11 @@
             }
         </script>
 
-        <!-- newCell1.innerHTML = '<input type="text" name="pId" value="">';
-        newCell2.innerHTML = '<input type="text" name="at" value="">';
-        newCell3.innerHTML = '<input type="text" name="bt" value="">'; -->
-
     </div>
 
+    <!-- <div>
+        <video autoplay muted loop id="myVideo">
+            <source src="imgs/background.mp4" type="video/mp4">
+        </video>
+    </div> -->
     <%- include('./includes/end.ejs') %>
