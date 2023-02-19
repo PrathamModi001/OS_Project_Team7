@@ -11,6 +11,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Process ID</th>
+                        <th scope="col">Process Name</th>
                         <th scope="col">Arrival Time</th>
                         <th scope="col">Burst Time</th>
                         <th scope="col">Completion Time</th>
@@ -28,6 +29,7 @@
                         <% count++ %>
                         <tr>
                             <td name="pId" id="pId"> <%= arr[i].id %> </td>
+                            <td name="pName" id="pName"> P<%= i %> </td>
                             <td name="at" id="at"><%= arr[i].at %> </td>
                             <td name="bt" id="bt"><%= arr[i].bt %> </td>
                             <td name="bt" id="bt"><%= arr[i].ct %> </td>
@@ -42,6 +44,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
                         </tr>
                     <th scope="col">Time Taken</th>
                     <td name="time" id="time"><%= time %> </td>
@@ -49,6 +52,7 @@
                     <td name="avg_tat"><%= total_tat / count %> </td>
                     <th scope="col">Average Waiting Time</th>
                     <td name="avg_tat"><%= total_wt / count %> </td>
+                    <td></td>
                 </tbody>
             </table>
         </form>

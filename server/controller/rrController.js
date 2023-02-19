@@ -2,7 +2,9 @@ const Result = require("../models/table")
 
 /** GET Round Robin page */
 exports.getRoundRobin = (req, res, next) => {
-    res.render("round-robin")
+    res.render("round-robin", {
+        title: "Round-Robin"
+    })
 }
 
 exports.postRoundRobin = async (req, res, next) => {
@@ -184,6 +186,7 @@ exports.postRoundRobin = async (req, res, next) => {
         await newTable.save()
         // res.redirect("/round-robin/solution")
         res.render("solution", {
+            title: "RR Simulator",
             arr: arr,
             time: time,
             flag : flag,
