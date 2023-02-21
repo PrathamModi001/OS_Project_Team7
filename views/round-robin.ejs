@@ -29,7 +29,7 @@
                                 style="width: 200px;"></td>
                         <td> <input type="number" name="at" id="at" required="required"></td>
                         <td> <input type="number" name="bt" id="bt" required="required"></td>
-                        <td><button onclick="deleteRow(this)">Delete</button></td>
+                        <td><button onclick="deleteRow(this)" class="b1">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -70,6 +70,7 @@
                 atCell.innerHTML = '<input type="text" name="at" value="">';
                 btCell.innerHTML = '<input type="text" name="bt" value="">';
                 var deleteButton = document.createElement("button");
+                deleteButton.classList.add("b1");
                 deleteButton.innerHTML = "Delete";
                 deleteButton.onclick = function () {
                     deleteRow(this);

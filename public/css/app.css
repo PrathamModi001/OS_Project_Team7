@@ -1,109 +1,109 @@
 body {
-    background: black;
-    font-family: "Nunito", sans-serif;
-    overflow-x: hidden;
-    /* overflow-y: hidden; */
+  background: black;
+  font-family: "Nunito", sans-serif;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
 }
 
 header {
-    /* position: fixed; */
-    /* top:0; */
-    width: 100%;
-    margin-top: 50px;
+  /* position: fixed; */
+  /* top:0; */
+  width: 100%;
+  margin-top: 50px;
 }
 
 #mainNavbar .navbar-brand {
-    color: #ff017f;
-    font-weight: 500;
-    font-size: 1.5rem;
+  color: #ff017f;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 
 #mainNavbar {
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    font-weight: 100;
-    padding: 0 16px;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 100;
+  padding: 0 16px;
 }
 
 .nav-link {
-    color: white;
+  color: white;
 }
 
 .nav-link:hover {
-    color: #ff017f;
+  color: #ff017f;
 }
 
 .text span {
-    color: #FF017F;
+  color: #ff017f;
 }
 
 .text .headings {
-    color: white;
-    font-weight: 150;
-    font-size: 5rem;
+  color: white;
+  font-weight: 150;
+  font-size: 5rem;
 }
 
 .headings {
-    color: white;
-    font-weight: 150;
-    font-size: 5rem;
-    margin-bottom: 30px;
+  color: white;
+  font-weight: 150;
+  font-size: 5rem;
+  margin-bottom: 30px;
 }
 
 .text .subHeadings {
-    color: white;
-    font-weight: 100;
+  color: white;
+  font-weight: 100;
+  font-size: 3rem;
+}
+
+@media (max-width: 1200px) {
+  .text .headings {
     font-size: 3rem;
+  }
+
+  .text .subHeadings {
+    font-size: 2rem;
+  }
+
+  #img1 {
+    padding: 0;
+    left: 0;
+  }
+
+  .landingImage {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+  }
+
+  .landingVideo {
+    width: 950px !important;
+  }
 }
 
-@media (max-width:1200px) {
-    .text .headings {
-        font-size: 3rem;
-    }
-
-    .text .subHeadings {
-        font-size: 2rem;
-    }
-
-    #img1 {
-        padding: 0;
-        left: 0;
-    }
-
-    .landingImage {
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-    }
-
-    .landingVideo {
-        width: 950px !important
-    }
+@media (max-width: 950px) {
+  .landingVideo {
+    width: 800px !important;
+    margin-left: 6%;
+  }
 }
 
-@media (max-width:950px) {
-    .landingVideo {
-        width: 800px !important;
-        margin-left: 6%;
-    }
-}
+@media (max-width: 768px) {
+  .para {
+    margin-bottom: 100px;
+  }
 
-@media (max-width:768px) {
-    .para {
-        margin-bottom: 100px;
-    }
+  #img1 {
+    padding: 0;
+  }
 
-    #img1 {
-        padding: 0;
-    }
-
-    .landingVideo {
-        width: 700px !important
-    }
+  .landingVideo {
+    width: 700px !important;
+  }
 }
 
 #first {
-    height: 100vh;
+  height: 100vh;
 }
 
 /* #second {
@@ -122,94 +122,107 @@ header {
 }  */
 
 .material {
-    color: white;
-    font-weight: 100;
-    font-size: 1.125rem;
-    line-height: 2;
+  color: white;
+  font-weight: 100;
+  font-size: 1.125rem;
+  line-height: 2;
 }
 
 .material-title {
-    font-weight: 100;
-    color: #ff017f;
-    font-size: 2.5rem;
+  font-weight: 100;
+  color: #ff017f;
+  font-size: 2.5rem;
 }
 
 #aboutUs li {
-    background-color: black;
-    color: white;
-    font-weight: 300;
-    font-size: 1.125rem;
-    line-height: 2;
+  background-color: black;
+  color: white;
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 2;
 }
 
 p {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:active {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a {
-    color: inherit;
+  color: inherit;
 }
 
 .b1 {
-    /* font-family: "Nunito", sans-serif; */
-    font-size: 25px;
-    border: none;
-    background: transparent;
-    color: white;
+  /* font-family: "Nunito", sans-serif; */
+  font-size: 25px;
+  border: none;
+  background: transparent;
+  color: white;
 }
 
 .b1:hover {
-    color: #FF017F;
+  color: #ff017f;
 }
 
 .subHeadings :hover {
-    color: #FF017F;
+  color: #ff017f;
 }
 
 #img1 {
-    position: absolute;
-    right: -12px;
-    top: 0;
+  position: absolute;
+  right: -12px;
+  top: 0;
 }
 
 .firstDiv {
-    margin-top: 200px;
+  margin-top: 200px;
 }
 
 .landingImage {
-    height: 100vh;
-    object-fit: cover;
+  height: 100vh;
+  object-fit: cover;
 }
 
 #myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 .smallCell {
-    margin-left: 20px; width: 90px;
+  margin-left: 20px;
+  width: 90px;
 }
-.smallCellData{
-    width: 90px;
+.smallCellData {
+  width: 90px;
 }
 .center {
-    text-align: center;
+  text-align: center;
+}
+
+.delete-button {
+  padding: 0;
+  font-size: 20px;
+  border: none;
+  background: transparent;
+  color: white;
+}
+
+.delete-button:hover {
+  color: #ff017f;
 }

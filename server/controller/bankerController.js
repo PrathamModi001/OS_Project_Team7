@@ -1,159 +1,185 @@
 /** GET Dead Lock page */
 exports.getBanker = (req, res, next) => {
-    res.render("banker", {
-        title: "Banker's Algorithm"
-    })
-}
+  res.render("banker", {
+    title: "Banker's Algorithm",
+  });
+};
 
 /** POST DeadLock */
 exports.postBanker = (req, res, next) => {
-    let pCount=1;
-    let arr = [];
-    let index = 0;
-    let flag = 0;
-    let allNotDone = true;
-    let available = {
-        A: 0,
-        B: 0,
-        C: 0,
+  let arr = [];
+  let index = 0;
+  let flag = 0;
+  let allNotDone = true;
+  let available = {
+    A: 0,
+    B: 0,
+    C: 0,
+  };
+  let processNumArr = req.body.pNum;
+  let processSequence = [];
+  const A = req.body.a;
+  const B = req.body.b;
+  const C = req.body.c;
+  let totalAllocatedA = 0;
+  let totalAllocatedB = 0;
+  let totalAllocatedC = 0;
+
+  class process {
+    done = false;
+    processNum = 0;
+    allocated = {
+      A: 0,
+      B: 0,
+      C: 0,
     };
-    let allocatedArr = [];
-    let maxNeedArr = [];
-    let processNumArr = [];
-    let processSequence = [];
-    const A = req.body.a;
-    const B = req.body.b;
-    const C = req.body.c;
-    let totalAllocatedA = 0;
-    let totalAllocatedB = 0;
-    let totalAllocatedC = 0;
+    maxNeed = {
+      A: 0,
+      B: 0,
+      C: 0,
+    };
+    remainingNeed = {
+      A: 0,
+      B: 0,
+      C: 0,
+    };
 
-    class process {
-        done = false;
-        processNum = 0;
-        allocated = {
-            A: 0,
-            B: 0,
-            C: 0,
-        };
-        maxNeed = {
-            A: 0,
-            B: 0,
-            C: 0,
-        };
-        remainingNeed = {
-            A: 0,
-            B: 0,
-            C: 0,
-        };
+    // calculateRemainingNeed() {
+    //   Object.keys(this.maxNeed).forEach((key) => {
+    //     if (this.allocated.hasOwnProperty(key)) {
+    //       this.remainingNeed[key] = this.maxNeed[key] - this.allocated[key];
+    //     }
+    //   });
+    //   return;
+    // }
 
-        calculateRemainingNeed() {
-            Object.keys(this.maxNeed).forEach((key) => {
-                if (this.allocated.hasOwnProperty(key)) {
-                    this.remainingNeed[key] = this.maxNeed[key] - this.allocated[key];
-                }
-            });
-            return;
-        }
+    constructor(
+      allocatedA,
+      allocatedB,
+      allocatedC,
+      maxNeedA,
+      maxNeedB,
+      maxNeedC,
+      processNum
+    ) {
+      this.allocated.A = allocatedA;
+      this.allocated.B = allocatedB;
+      this.allocated.C = allocatedC;
 
-        constructor(allocated, maxNeed, processNum) {
-            this.allocated = allocated;
-            this.maxNeed = maxNeed;
-            this.processNum = processNum;
-            this.calculateRemainingNeed();
-            pCount++;
-        }
+      this.maxNeed.A = maxNeedA;
+      this.maxNeed.B = maxNeedB;
+      this.maxNeed.C = maxNeedC;
+
+      this.processNum = processNum;
+      //   this.calculateRemainingNeed();
     }
+  }
 
-    for (let i = 0; i < ; i++) {
-        let Allocated = {
-            A: req.body.allocA,
-            B: req.body.allocB,
-            C: req.body.allocC,
-        };
-        allocatedArr.push(Allocated);
-        let MaxNeed = {
-            A: req.body.maxA,
-            B: req.body.maxB,
-            C: req.body.maxC,
-        };
-        maxNeedArr.push(MaxNeed);
-        let ProcessNum = 0;
-        processNumArr.push(ProcessNum);
-        let p = new process(allocatedArr[i], maxNeedArr[i], processNumArr[i]);
-        arr.push(p);
-        console.log(p)
+  let AllocatedA = [];
+  let AllocatedB = [];
+  let AllocatedC = [];
+  let MaxNeedA = [];
+  let MaxNeedB = [];
+  let MaxNeedC = [];
+
+  AllocatedA = req.body.allocA;
+  AllocatedB = req.body.allocB;
+  AllocatedC = req.body.allocC;
+
+  MaxNeedA = req.body.maxA;
+  MaxNeedB = req.body.maxB;
+  MaxNeedC = req.body.maxC;
+
+  function calculateRemainingNeed(p){
+    p.remainingNeed.A = p.maxNeed.A-p.allocated.A;
+    p.remainingNeed.B = p.maxNeed.B-p.allocated.B;
+    p.remainingNeed.C = p.maxNeed.C-p.allocated.C;
+    return;
+  }
+
+  for (let i = 0; i < processNumArr.length; i++) {
+    let p = new process(
+      AllocatedA[i],
+      AllocatedB[i],
+      AllocatedC[i],
+      MaxNeedA[i],
+      MaxNeedB[i],
+      MaxNeedC[i],
+      processNumArr[i]
+    );
+    calculateRemainingNeed(p);
+    arr.push(p);
+  }
+
+  function calculateAvailableFirstTime() {
+    for (let i = 0; i < processNumArr.length; i++) {
+      totalAllocatedA += parseInt(AllocatedA[i]);
+      totalAllocatedB += parseInt(AllocatedB[i]);
+      totalAllocatedC += parseInt(AllocatedC[i]);
     }
+    available.A = A - totalAllocatedA;
+    available.B = B - totalAllocatedB;
+    available.C = C - totalAllocatedC;
+    return;
+  }
 
-    function calculateAvailableFirstTime() {
-        for (let i = 0; i < allocatedArr.length; i++) {
-            totalAllocatedA += allocatedArr[i].A;
-            totalAllocatedB += allocatedArr[i].B;
-            totalAllocatedC += allocatedArr[i].C;
-        }
-        available.A = A - totalAllocatedA;
-        available.B = B - totalAllocatedB;
-        available.C = C - totalAllocatedC;
+  function checkNeed(available, remaining_need_process) {
+    if (
+      parseInt(available.A) >= parseInt(remaining_need_process.A) &&
+      parseInt(available.B) >= parseInt(remaining_need_process.B) &&
+      parseInt(available.C) >= parseInt(remaining_need_process.C)
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  function allDone() {
+    for (let k = 0; k < arr.length; k++) {
+      if (arr[k].done === false) {
         return;
+      }
     }
+    allNotDone = false;
+    return;
+  }
 
-    function checkNeed(available, remaining_need_process) {
-        if (
-            available.A >= remaining_need_process.A &&
-            available.B >= remaining_need_process.B &&
-            available.C >= remaining_need_process.C
-        ) {
-            return true;
-        }
-        return false;
+  function calculateAvailable(i) {
+    available.A += parseInt(AllocatedA[i]);
+    available.B += parseInt(AllocatedB[i]);
+    available.C += parseInt(AllocatedC[i]);
+    return;
+  }
+  calculateAvailableFirstTime();
+
+  while (allNotDone) {
+    if (arr.length === 0) {
+      break;
     }
-
-    function allDone() {
-        for (let k = 0; k < arr.length; k++) {
-            if (arr[k].done === false) {
-                return;
-            }
-        }
-        allNotDone = false;
-        return;
-    }
-
-    calculateAvailableFirstTime();
-
-    function calculateAvailable(i) {
-        available.A += allocatedArr[i].A;
-        available.B += allocatedArr[i].B;
-        available.C += allocatedArr[i].C;
-        return;
-    }
-
-    while (allNotDone) {
-        if (arr.length === 0) {
-            break;
-        }
-        if (checkNeed(available, arr[index].remainingNeed) && !arr[index].done) {
-            flag = 0;
-            calculateAvailable(index);
-            processSequence.push(arr[index]);
-            arr[index].done = true;
-            index = (index + 1) % arr.length;
-        } else {
-            index = (index + 1) % arr.length;
-            if (flag == arr.length) {
-                allNotDone = false;
-                break;
-            }
-            flag += 1;
-        }
-
-        allDone();
-    }
-    if (flag === arr.length) {
-        console.log("DEADLOCK");
+    if (checkNeed(available, arr[index].remainingNeed) && !arr[index].done) {
+      flag = 0;
+      calculateAvailable(index);
+      processSequence.push(arr[index].processNum);
+      arr[index].done = true;
+      index = (index + 1) % arr.length;
     } else {
-        console.log(processSequence);
+      index = (index + 1) % arr.length;
+      if (flag == arr.length) {
+        allNotDone = false;
+        break;
+      }
+      flag += 1;
     }
-    console.log(arr.length)
-    console.log(flag)
-    res.redirect("/")
-}
+
+    allDone();
+  }
+  if (flag === arr.length) {
+    console.log("DEADLOCK");
+  } else {
+    console.log(processSequence);
+  }
+  //   console.log(arr.length);
+    console.log(flag);
+  console.log(available);
+  res.redirect("/");
+};

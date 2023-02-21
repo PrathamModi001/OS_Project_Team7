@@ -50,7 +50,7 @@
                         <td> <input type="number" name="maxA" class="smallCellData" id="maxA" required="required"></td>
                         <td> <input type="number" name="maxB" class="smallCellData" id="maxB" required="required"></td>
                         <td> <input type="number" name="maxC" class="smallCellData" id="maxC" required="required"></td>
-                        <td><button onclick="deleteRow(this)">Delete</button></td>
+                        <td><button onclick="deleteRow(this)" class="delete-button">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -99,7 +99,8 @@
                 maxBCell.innerHTML = '<input type="text" name="maxB" value="" class="smallCellData">';
                 maxCCell.innerHTML = '<input type="text" name="maxC" value="" class="smallCellData">';
                 var deleteButton = document.createElement("button");
-                deleteButton.innerHTML = "Delete";
+                deleteButton.classList.add("delete-button");
+                deleteButton.innerHTML = 'Delete';
                 deleteButton.onclick = function () {
                     deleteRow(this);
                 };
