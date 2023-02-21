@@ -11,6 +11,7 @@ exports.postBanker = (req, res, next) => {
     let index = 0;
     let flag = 0;
     let allNotDone = true;
+    let isDeadLock=false;
     let available = {
         A: 0,
         B: 0,
@@ -175,10 +176,10 @@ exports.postBanker = (req, res, next) => {
     }
     if (flag === arr.length) {
         console.log("DEADLOCK");
+        isDeadLock=true;
     } else {
         console.log(processSequence);
     }
-    //   console.log(arr.length);
     console.log(flag);
     console.log(available);
     res.redirect("/");
