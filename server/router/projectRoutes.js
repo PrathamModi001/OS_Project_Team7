@@ -3,6 +3,7 @@ const router = express.Router()
 
 const projectController = require('../controller/projectController')
 const rrController = require('../controller/rrController')
+const bankerController = require("../controller/bankerController")
 
 /** Project Routes */
 router.get("/" , projectController.getHome)
@@ -12,7 +13,8 @@ router.get("/round-robin" , rrController.getRoundRobin)
 router.post("/round-robin" , rrController.postRoundRobin)
 
 /** Dead Lock Routes  */
-router.get("/dead-lock" , projectController.getDeadLock)
+router.get("/banker's-algo" , bankerController.getBanker)
+router.post("/banker's-algo" , bankerController.postBanker)
 
 /** SCAN C-SCAN */
 router.get("/scan-cScan" , projectController.getSCAN)

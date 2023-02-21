@@ -204,3 +204,12 @@ a {
     min-width: 100%;
     min-height: 100%;
 }
+.smallCell {
+    margin-left: 20px; width: 90px;
+}
+.smallCellData{
+    width: 90px;
+}
+.center {
+    text-align: center;
+}

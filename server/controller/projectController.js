@@ -7,12 +7,6 @@ exports.getHome = (req,res,next) => {
     })
 }
 
-/** GET Dead Lock page */
-exports.getDeadLock = (req,res,next) => {
-    res.render("deadlock", {
-        title: "Deadlock"
-    })
-}
 
 /**GET Scan Page */
 exports.getSCAN = (req,res,next) => {

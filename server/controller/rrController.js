@@ -21,7 +21,7 @@ exports.postRoundRobin = async (req, res, next) => {
             if (pId[i] === pId[j]) {
                 // alert("You must enter at least two processes to calculate.");
                 // event.preventDefault(); // prevent form submission
-                console.log("SAME SAME SAME")
+                // console.log("SAME SAME SAME")
                 flag = 0;
                 break;
             }
