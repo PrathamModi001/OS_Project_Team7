@@ -1,117 +1,243 @@
 <%- include('./includes/head.ejs') %>
 
-    <div class="center">
-        <h1 class="headings">BANKER'S ALGORITHM</h1>
+<div class="center">
+  <h1 class="headings">BANKER'S ALGORITHM</h1>
+</div>
+
+<div class="container" style="text-align: center">
+  <form action="/banker's-algo" method="POST" id="myForm">
+    <table class="table table-striped table-dark">
+      <tr>
+        <td></td>
+        <td></td>
+        <td scope="col">
+          Enter A :<input
+            type="number"
+            name="a"
+            id="a"
+            required="required"
+            class="smallCell"
+          />
+        </td>
+        <td scope="col">
+          Enter B :<input
+            type="number"
+            name="b"
+            id="b"
+            required="required"
+            class="smallCell"
+          />
+        </td>
+        <td scope="col">
+          Enter C :<input
+            type="number"
+            name="c"
+            id="c"
+            required="required"
+            class="smallCell"
+          />
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <table class="table table-striped table-dark" id="myTable">
+      <thead>
+        <tr>
+          <th
+            scope="col"
+            rowspan="2"
+            style="vertical-align: middle; width: 11rem"
+          >
+            Process Number
+          </th>
+          <!-- <th></th> -->
+          <th scope="col" colspan="3" style="text-align: center">Allocated</th>
+          <th scope="col" colspan="3" style="text-align: center">Max Need</th>
+          <th
+            scope="col"
+            rowspan="2"
+            style="vertical-align: middle; width: 11rem"
+          >
+            Delete Row
+          </th>
+        </tr>
+        <tr>
+          <th
+            class="smallCellText"
+            style="vertical-align: middle; width: 11rem"
+          >
+            A
+          </th>
+          <th
+            class="smallCellText"
+            style="vertical-align: middle; width: 11rem"
+          >
+            B
+          </th>
+          <th
+            class="smallCellText"
+            style="vertical-align: middle; width: 11rem"
+          >
+            C
+          </th>
+          <th
+            class="smallCellText"
+            style="vertical-align: middle; width: 11rem"
+          >
+            A
+          </th>
+          <th
+            class="smallCellText"
+            style="vertical-align: middle; width: 11rem"
+          >
+            B
+          </th>
+          <th
+            class="smallCellText"
+            style="vertical-align: middle; width: 11rem"
+          >
+            C
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input
+              type="number"
+              min="1"
+              max="20"
+              name="pNum"
+              id="pNum"
+              required="required"
+              class="smallCellData"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="allocA"
+              class="smallCellData"
+              id="allocA"
+              required="required"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="allocB"
+              class="smallCellData"
+              id="allocB"
+              required="required"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="allocC"
+              class="smallCellData"
+              id="allocC"
+              required="required"
+            />
+          </td>
+          <!--  -->
+          <td>
+            <input
+              type="number"
+              name="maxA"
+              class="smallCellData"
+              id="maxA"
+              required="required"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="maxB"
+              class="smallCellData"
+              id="maxB"
+              required="required"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="maxC"
+              class="smallCellData"
+              id="maxC"
+              required="required"
+            />
+          </td>
+          <td>
+            <button onclick="deleteRow(this)" class="delete-button">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="display: inline; margin: 20px 30px">
+      <button class="b1" type="button" onclick="addRow()">Add Row</button>
     </div>
 
-    <div class="container">
-
-
-        <form action="/banker's-algo" method="POST" id="myForm">
-            <table class="table table-striped table-dark" id="myTable">
-                <thead>
-                    <tr>
-                        <td scope="col">Enter A:<input type="number" name="a" id="a"
-                                placeholder="A" required="required" class="smallCell"></td>
-                        <td scope="col">Enter B:<input type="number" name="b" id="b"
-                                placeholder="B" required="required" class="smallCell"></td>
-                        <td scope="col">Enter C:<input type="number" name="c" id="c"
-                                placeholder="C" required="required" class="smallCell"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="col" rowspan="2" style="vertical-align: middle;">Process Number</th>
-                        <!-- <th></th> -->
-                        <th scope="col" colspan="3" style="text-align: center;">Allocated</th>
-                        <th scope="col" colspan="3" style="text-align: center;">Max Need</th>
-                        <th scope="col" rowspan="2" style="vertical-align: middle;">Delete Row</th>
-                    </tr>
-                    <tr>
-                        <th>A</th>
-                        <th>B</th>
-                        <th>C</th>
-                        <th>a</th>
-                        <th>b</th>
-                        <th>c</th>
-                    </tr>
-                    
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> <input type="number" min="1" max="20" name="pNum" id="pNum" required="required" class="smallCellData"></td>
-                        <td> <input type="number" name="allocA" class="smallCellData" id="allocA" required="required"></td>
-                        <td> <input type="number" name="allocB" class="smallCellData" id="allocB" required="required"></td>
-                        <td> <input type="number" name="allocC" class="smallCellData" id="allocC" required="required"></td>
-                        <!--  -->
-                        <td> <input type="number" name="maxA" class="smallCellData" id="maxA" required="required"></td>
-                        <td> <input type="number" name="maxB" class="smallCellData" id="maxB" required="required"></td>
-                        <td> <input type="number" name="maxC" class="smallCellData" id="maxC" required="required"></td>
-                        <td><button onclick="deleteRow(this)" class="delete-button">Delete</button></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="center">
-                <button type="submit" class="b1">Calculate</button>
-            </div>
-        </form>
-
-        <div class="center">
-            <button class="b1" type="button" onclick="addRow()"> Add Row </button>
-        </div>
-
-        <script>
-
-            // the logic for when if there is only one row you cannot submit the form.
-            var form = document.getElementById("myForm");
-            form.addEventListener("submit", function (event) {
-                var table = document.getElementById("myTable");
-                if (table.rows.length <= 4) {
-                    alert("You must enter at least two processes to calculate.");
-                    event.preventDefault(); // prevent form submission
-                }
-            });
-
-
-
-
-            // the logic for adding a row and the logic for delete row button
-            function addRow() {
-                var table = document.getElementById("myTable");
-                var newRow = table.insertRow(-1); // Add row at the end
-                var pNumCell = newRow.insertCell(0);
-                var allocACell = newRow.insertCell(1);
-                var allocBCell = newRow.insertCell(2);
-                var allocCCell = newRow.insertCell(3);
-                var maxACell = newRow.insertCell(4);
-                var maxBCell = newRow.insertCell(5);
-                var maxCCell = newRow.insertCell(6);
-                var buttonCell = newRow.insertCell(7);
-                pNumCell.innerHTML = '<input type="text" name="pNum" value="" class="smallCellData">';
-                allocACell.innerHTML = '<input type="text" name="allocA" value="" class="smallCellData">';
-                allocBCell.innerHTML = '<input type="text" name="allocB" value="" class="smallCellData">';
-                allocCCell.innerHTML = '<input type="text" name="allocC" value="" class="smallCellData">';
-                maxACell.innerHTML = '<input type="text" name="maxA" value="" class="smallCellData">';
-                maxBCell.innerHTML = '<input type="text" name="maxB" value="" class="smallCellData">';
-                maxCCell.innerHTML = '<input type="text" name="maxC" value="" class="smallCellData">';
-                var deleteButton = document.createElement("button");
-                deleteButton.classList.add("delete-button");
-                deleteButton.innerHTML = 'Delete';
-                deleteButton.onclick = function () {
-                    deleteRow(this);
-                };
-                buttonCell.appendChild(deleteButton);
-            }
-
-            function deleteRow(btn) {
-                var row = btn.parentNode.parentNode;
-                row.parentNode.removeChild(row);
-            }
-        </script>
-
+    <div style="display: inline; margin: 20px 30px">
+      <button type="submit" class="b1">Calculate</button>
     </div>
-    <%- include('./includes/end.ejs') %>
+  </form>
+
+  <script>
+    // the logic for when if there is only one row you cannot submit the form.
+    var form = document.getElementById("myForm");
+    form.addEventListener("submit", function (event) {
+      var table = document.getElementById("myTable");
+      if (table.rows.length <= 3) {
+        alert("You must enter at least two processes to calculate.");
+        event.preventDefault(); // prevent form submission
+      }
+    });
+
+    // the logic for adding a row and the logic for delete row button
+    function addRow() {
+      var table = document.getElementById("myTable");
+      var newRow = table.insertRow(-1); // Add row at the end
+      var pNumCell = newRow.insertCell(0);
+      var allocACell = newRow.insertCell(1);
+      var allocBCell = newRow.insertCell(2);
+      var allocCCell = newRow.insertCell(3);
+      var maxACell = newRow.insertCell(4);
+      var maxBCell = newRow.insertCell(5);
+      var maxCCell = newRow.insertCell(6);
+      var buttonCell = newRow.insertCell(7);
+      pNumCell.innerHTML =
+        '<input type="text" name="pNum" value="" class="smallCellData" required="required">';
+      allocACell.innerHTML =
+        '<input type="text" name="allocA" value="" class="smallCellData" required="required">';
+      allocBCell.innerHTML =
+        '<input type="text" name="allocB" value="" class="smallCellData" required="required">';
+      allocCCell.innerHTML =
+        '<input type="text" name="allocC" value="" class="smallCellData" required="required">';
+      maxACell.innerHTML =
+        '<input type="text" name="maxA" value="" class="smallCellData" required="required">';
+      maxBCell.innerHTML =
+        '<input type="text" name="maxB" value="" class="smallCellData" required="required">';
+      maxCCell.innerHTML =
+        '<input type="text" name="maxC" value="" class="smallCellData" required="required">';
+      var deleteButton = document.createElement("button");
+      deleteButton.classList.add("delete-button");
+      deleteButton.innerHTML = "Delete";
+      deleteButton.onclick = function () {
+        deleteRow(this);
+      };
+      buttonCell.appendChild(deleteButton);
+    }
+
+    function deleteRow(btn) {
+      var row = btn.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+  </script>
+</div>
+<%- include('./includes/end.ejs') %>

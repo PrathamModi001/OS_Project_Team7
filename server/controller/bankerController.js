@@ -186,7 +186,7 @@ exports.postBanker = (req, res, next) => {
   }
   if (flag === arr.length) {
     console.log("DEADLOCK");
-    console.log(processSequence);
+    // console.log(processSequence);
     isDeadLock = true;
   } else {
     console.log(processSequence);
