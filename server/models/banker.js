@@ -44,27 +44,27 @@ const bankerSchema = new Schema ({
         required: true
     },
     remA : {
-        type : Number,
+        type : Array,
         required: true
     },
     remB : {
-        type : Number,
+        type : Array,
         required: true
     },
     remC : {
-        type : Number,
+        type : Array,
         required: true
     },
     availA : {
-        type : Number,
+        type : Array,
         required: true
     },
     availB : {
-        type : Number,
+        type : Array,
         required: true
     },
     availC : {
-        type : Number,
+        type : Array,
         required: true
     },
     isDeadLock : {

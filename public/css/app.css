@@ -19,6 +19,7 @@ header {
 }
 
 #mainNavbar {
+  width: 99%;
   background-color: black;
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -44,11 +45,32 @@ header {
   font-size: 5rem;
 }
 
-.headings {
-  color: white;
-  font-weight: 150;
+.hyperplexed {
+  font-weight: 300;
+  margin-bottom: 70px;
   font-size: 5rem;
-  margin-bottom: 30px;
+  /* font-size: clamp(1rem, 10vw, 10rem); */
+  color: white;
+  padding: 0rem clamp(1rem, 2vw, 13rem);
+  border-radius: clamp(0.4rem, 0.75vw, 1rem);
+  text-decoration: underline #dd2682 3px;
+}
+.hyperplexed:hover {
+  font-weight: 500;
+  font-size: 6rem;
+  margin-bottom: 51px;
+}
+
+.headings {
+  font-weight: 150;
+  margin-top: 75px;
+  margin-bottom: 50px;
+  font-size: 6rem;
+  /* font-size: clamp(3rem, 10vw, 10rem); */
+  color: white;
+  padding: 0rem clamp(1rem, 2vw, 13rem);
+  border-radius: clamp(0.4rem, 0.75vw, 1rem);
+  text-decoration: underline #dd2682 3px;
 }
 
 .text .subHeadings {
@@ -252,22 +274,16 @@ a {
 
 /* SCROLLBAR */
 
-/* width */
 ::-webkit-scrollbar {
+  width: 0;
+}
+
+#progressBar {
+  position: fixed;
+  top: 0;
+  right: 0;
   width: 15px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: rgb(20, 20, 20);
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #dd26829a;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #dd2682d3;
+  height: 0;
+  border-radius: 10px;
+  background: linear-gradient(to top, white, #ff69b4, black);
 }

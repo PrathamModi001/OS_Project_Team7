@@ -1,6 +1,2 @@
 Added the custom scroll bar 
-Made the navbar background black
-Added the simulator button
-Changed the font color a bit 
-Changed the hover look of sub headings on the landing page
-changed the name of solution.ejs to rrSolution.ejs
+hyperplexed text

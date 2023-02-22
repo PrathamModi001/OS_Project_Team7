@@ -8,7 +8,7 @@ exports.getBanker = (req, res, next) => {
 };
 
 /** POST DeadLock */
-exports.postBanker = (req, res, next) => {
+exports.postBanker = async (req, res, next) => {
   let arr = [];
   let index = 0;
   let availableIndex = 0;
@@ -16,12 +16,48 @@ exports.postBanker = (req, res, next) => {
   let checkDiff = 1;
   let allNotDone = true;
   let isDeadLock = false;
+
   let available = {
     A: 0,
     B: 0,
     C: 0,
   };
+
   let processNumArr = req.body.pNum;
+
+  const A = req.body.a;
+  const B = req.body.b;
+  const C = req.body.c;
+
+  AllocatedA = req.body.allocA;
+  AllocatedB = req.body.allocB;
+  AllocatedC = req.body.allocC;
+
+  MaxNeedA = req.body.maxA;
+  MaxNeedB = req.body.maxB;
+  MaxNeedC = req.body.maxC;
+
+  let processSequence = [];
+
+  let totalAllocatedA = 0;
+  let totalAllocatedB = 0;
+  let totalAllocatedC = 0;
+
+  let AllocatedA = [];
+  let AllocatedB = [];
+  let AllocatedC = [];
+
+  let MaxNeedA = [];
+  let MaxNeedB = [];
+  let MaxNeedC = [];
+
+  let RemainingNeedA = [];
+  let RemainingNeedB = [];
+  let RemainingNeedC = [];
+
+  let AvailableA = [];
+  let AvailableB = [];
+  let AvailableC = [];
 
   for (let i = 0; i < processNumArr.length; i++) {
     for (let j = i + 1; j < processNumArr.length; j++) {
@@ -33,34 +69,6 @@ exports.postBanker = (req, res, next) => {
   }
   if (checkDiff === 1) {
     //ACTUAL ALGO
-
-    let processSequence = [];
-    const A = req.body.a;
-    const B = req.body.b;
-    const C = req.body.c;
-    let totalAllocatedA = 0;
-    let totalAllocatedB = 0;
-    let totalAllocatedC = 0;
-    let AllocatedA = [];
-    let AllocatedB = [];
-    let AllocatedC = [];
-    let MaxNeedA = [];
-    let MaxNeedB = [];
-    let MaxNeedC = [];
-    let RemainingNeedA = [];
-    let RemainingNeedB = [];
-    let RemainingNeedC = [];
-    let AvailableA = [];
-    let AvailableB = [];
-    let AvailableC = [];
-
-    AllocatedA = req.body.allocA;
-    AllocatedB = req.body.allocB;
-    AllocatedC = req.body.allocC;
-
-    MaxNeedA = req.body.maxA;
-    MaxNeedB = req.body.maxB;
-    MaxNeedC = req.body.maxC;
 
     class process {
       done = false;
@@ -208,6 +216,28 @@ exports.postBanker = (req, res, next) => {
     console.log(flag);
     console.log(AvailableA);
     console.log("BARABAR CHE!!!!");
+
+    const newBanker = new Banker({
+      A: A,
+      B: B,
+      C: C,
+      pNum: processNumArr,
+      allocA: AllocatedA,
+      alloB: AllocatedB,
+      allocC: AllocatedC,
+      maxA: MaxNeedA,
+      maxB: MaxNeedB,
+      maxC: MaxNeedC,
+      remA: RemainingNeedA,
+      remB: RemainingNeedB,
+      remC: RemainingNeedC,
+      availA: AvailableA,
+      availB: AvailableB,
+      availC: AvailableC,
+      isDeadLock: isDeadLock,
+      processSequence: processSequence,
+    });
+    // await newBanker.save();
   } else {
     // alert("Enter Different process numbers.")
     res.redirect("/");
