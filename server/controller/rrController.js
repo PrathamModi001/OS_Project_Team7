@@ -185,7 +185,7 @@ exports.postRoundRobin = async (req, res, next) => {
 
         await newTable.save()
         // res.redirect("/round-robin/solution")
-        res.render("solution", {
+        res.render("rrSolution", {
             title: "RR Simulator",
             arr: arr,
             time: time,

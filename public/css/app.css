@@ -13,12 +13,13 @@ header {
 }
 
 #mainNavbar .navbar-brand {
-  color: #ff017f;
+  color: #dd2682;
   font-weight: 500;
   font-size: 1.5rem;
 }
 
 #mainNavbar {
+  background-color: black;
   text-transform: uppercase;
   font-size: 1.5rem;
   font-weight: 100;
@@ -30,11 +31,11 @@ header {
 }
 
 .nav-link:hover {
-  color: #ff017f;
+  color: #dd2682;
 }
 
 .text span {
-  color: #ff017f;
+  color: #dd2682;
 }
 
 .text .headings {
@@ -52,8 +53,12 @@ header {
 
 .text .subHeadings {
   color: white;
-  font-weight: 100;
+  font-weight: 150;
   font-size: 3rem;
+}
+
+.lead-para {
+  margin: 20px auto 10px;
 }
 
 @media (max-width: 1200px) {
@@ -129,8 +134,8 @@ header {
 }
 
 .material-title {
-  font-weight: 100;
-  color: #ff017f;
+  font-weight: 400;
+  color: #dd2682;
   font-size: 2.5rem;
 }
 
@@ -175,11 +180,25 @@ a {
 }
 
 .b1:hover {
-  color: #ff017f;
+  color: #dd2682;
+}
+
+.simulator {
+  font-size: 2rem;
+  color: white;
+  font-weight: 500;
+}
+
+.simulator:hover {
+  color: #dd2682;
+  /* font-size: 2.2rem; */
+  /* text-decoration: underline; */
 }
 
 .subHeadings :hover {
-  color: #ff017f;
+  color: #dd2682;
+  font-weight: 300;
+  font-size: 3.2rem;
 }
 
 #img1 {
@@ -224,9 +243,31 @@ a {
 }
 
 .delete-button:hover {
-  color: #ff017f;
+  color: #dd2682;
 }
 
-.smallCellText{
+.smallCellText {
   width: 10rem;
+}
+
+/* SCROLLBAR */
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(20, 20, 20);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dd26829a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #dd2682d3;
 }
