@@ -11,7 +11,7 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const MongoDB_URI = "mongodb+srv://modii:pratham@mycluster.l92tp0u.mongodb.net/RoundRobinDB"
+const MongoDB_URI = "mongodb+srv://modii:pratham@mycluster.l92tp0u.mongodb.net/Team7DB"
 
 const projectRoutes = require("./server/router/projectRoutes")
 
