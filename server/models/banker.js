@@ -4,76 +4,76 @@ const Schema = mongoose.Schema
 
 const bankerSchema = new Schema ({
     A : {
-        type : Number,
-        required: true
+        type : String,
+        // required: true
     },
     B : {
-        type : Number,
-        required: true
+        type : String,
+        // required: true
     },
     C : {
-        type : Number,
-        required: true
+        type : String,
+        // required: true
     },
     pNum : {
-        type : Number,
-        required: true
+        type : Object,
+        // required: true
     },
     allocA : {
-        type : Number,
-        required: true
+        type : Object,
+        // required: true
     },
     allocB : {
-        type : Number,
-        required: true
+        type : Object,
+        // required: true
     },
     allocC : {
-        type : Number,
-        required: true
+        type : Object,
+        // required: true
     },
     maxA : {
-        type : Number,
-        required: true
+        type : Object,
+        // required: true
     },
     maxB : {
-        type : Number,
-        required: true
+        type : Object,
+        // required: true
     },
     maxC : {
-        type : Number,
-        required: true
+        type : Object,
+        // required: true
     },
     remA : {
-        type : Array,
-        required: true
+        type : Object,
+        // required: true
     },
     remB : {
-        type : Array,
-        required: true
+        type : Object,
+        // required: true
     },
     remC : {
-        type : Array,
-        required: true
+        type : Object,
+        // required: true
     },
     availA : {
-        type : Array,
-        required: true
+        type : Object,
+        // required: true
     },
     availB : {
-        type : Array,
-        required: true
+        type : Object,
+        // required: true
     },
     availC : {
-        type : Array,
-        required: true
+        type : Object,
+        // required: true
     },
     isDeadLock : {
         type : Boolean,
-        required: true
+        // required: true
     },
     processSequence : {
-        type : Array,
-        required: true
+        type : Object,
+        // required: true
     },
 })
 

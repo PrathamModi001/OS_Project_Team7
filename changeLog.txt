@@ -1,2 +1,11 @@
-Added the custom scroll bar 
-hyperplexed text
+Changed the data types of: 
+A B C to String
+
+everything else --> Object
+
+Commented out AllocatedA MaxNeedA = [] initialization
+
+NOW: Able to save all data to DB
+
+BUT: the processSequence is remaining empty.
+
