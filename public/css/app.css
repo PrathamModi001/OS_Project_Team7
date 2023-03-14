@@ -35,7 +35,7 @@ header {
   color: #dd2682;
 }
 
-.text span {
+span {
   color: #dd2682;
 }
 
@@ -54,6 +54,7 @@ header {
   padding: 0rem clamp(1rem, 2vw, 13rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
   text-decoration: underline #dd2682 3px;
+  text-underline-offset: 7px;
 }
 .hyperplexed:hover {
   font-weight: 500;
@@ -71,6 +72,7 @@ header {
   padding: 0rem clamp(1rem, 2vw, 13rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
   text-decoration: underline #dd2682 3px;
+  text-underline-offset: 7px;
 }
 
 .text .subHeadings {
@@ -229,6 +231,11 @@ a {
   top: 0;
 }
 
+#img3 {
+  padding-left: 0;
+  padding-right: 50px;
+}
+
 .firstDiv {
   margin-top: 200px;
 }
@@ -285,5 +292,31 @@ a {
   width: 15px;
   height: 0;
   border-radius: 10px;
-  background: linear-gradient(to top, white, #ff69b4, black);
+  background: linear-gradient(
+    to top,
+    #b3487d,
+    #993265,
+    #64163d,
+    #420724,
+    black
+  );
+  margin-left: 10px;
+}
+
+/* toggle buttons */
+
+.btn-outline{
+  /* border-color: #dd2682; */
+  color: #dd2682;
+}
+
+.btn-outline:checked+.btn{
+  border-color: #dd2682;
+  background-color: #dd2682;
+  color: white;
+}
+
+.btn:hover{
+  background-color: #dd2682;
+  color: white;
 }

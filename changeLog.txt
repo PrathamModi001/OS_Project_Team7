@@ -1,11 +1,5 @@
-Changed the data types of: 
-A B C to String
-
-everything else --> Object
-
-Commented out AllocatedA MaxNeedA = [] initialization
-
-NOW: Able to save all data to DB
-
-BUT: the processSequence is remaining empty.
+added scanController
+added scan ejs
+added graph logic
+did some changes in css
 

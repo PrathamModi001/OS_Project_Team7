@@ -41,9 +41,9 @@ exports.postRoundRobin = async (req, res, next) => {
       done = false;
       added = false;
       constructor(at, bt, id) {
-        this.at = at;
-        this.bt = bt;
-        this.id = id;
+        this.at = parseInt(at);
+        this.bt = parseInt(bt);
+        this.id = parseInt(id);
         this.done = false;
       }
       addTo(array) {

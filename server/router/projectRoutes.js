@@ -4,6 +4,7 @@ const router = express.Router()
 const projectController = require('../controller/projectController')
 const rrController = require('../controller/rrController')
 const bankerController = require("../controller/bankerController")
+const scanController = require("../controller/scanController")
 
 /** Project Routes */
 router.get("/" , projectController.getHome)
@@ -17,7 +18,8 @@ router.get("/banker's-algo" , bankerController.getBanker)
 router.post("/banker's-algo" , bankerController.postBanker)
 
 /** SCAN C-SCAN */
-router.get("/scan-cScan" , projectController.getSCAN)
+router.get("/scan-cScan" , scanController.getScan)
+router.post("/scan-cScan" , scanController.postScan)
 
 /** MRU Page Replacement */
 router.get("/MRU" , projectController.getMRU)
