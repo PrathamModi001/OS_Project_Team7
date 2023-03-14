@@ -25,8 +25,6 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
   let time = 0;
   let All_Not_Done = true;
   let index = 0;
-  let processIdArr = pId;
-  let BT = tn;
 
   let mode = Mode;
   let initial_direction = Direction;
@@ -49,36 +47,6 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
   }
 
   console.log(processes);
-
-  //   let A = new process(13, "A", 1);
-  //   processes.push(A);
-
-  //   let B = new process(191, "B", 2);
-  //   processes.push(B);
-
-  //   let C = new process(35, "C", 3);
-  //   processes.push(C);
-
-  //   let D = new process(111, "D", 4);
-  //   processes.push(D);
-
-  //   let E = new process(163, "E", 5);
-  //   processes.push(E);
-
-  //   let F = new process(163, "F", 6);
-  //   processes.push(F);
-
-  //   let G = new process(176, "G", 7);
-  //   processes.push(G);
-
-  //   let H = new process(105, "H", 8);
-  //   processes.push(H);
-
-  //   let I = new process(62, "I", 9);
-  //   processes.push(I);
-
-  //   let J = new process(185, "J", 10);
-  //   processes.push(J);
 
   processes.sort(function (a, b) {
     return a.bt - b.bt;
