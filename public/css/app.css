@@ -305,18 +305,17 @@ a {
 
 /* toggle buttons */
 
-.btn-outline{
-  /* border-color: #dd2682; */
-  color: #dd2682;
-}
-
-.btn-outline:checked+.btn{
+#myForm .btn-outline:checked+.btn{
   border-color: #dd2682;
   background-color: #dd2682;
   color: white;
 }
 
-.btn:hover{
-  background-color: #dd2682;
-  color: white;
+#myForm .btn{
+  --bs-btn-bg:none;
+  --bs-btn-color:white;
+}
+
+#myForm .btn:hover{
+  --bs-btn-color: #dd2682;
 }
