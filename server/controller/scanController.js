@@ -204,6 +204,11 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
     });
     newScan.save();
 
+    
+    res.render("scanSolution" , {
+      title : "Solution",
+      completed_processes : completed_processes
+    })
     // pId , tn , headpoint , mode , direction , xaxis , yaxis , completedProcess
     // xAxis yAxis Completed Process all objects
     // pId tn Object
