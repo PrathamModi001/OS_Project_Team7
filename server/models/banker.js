@@ -5,75 +5,75 @@ const Schema = mongoose.Schema
 const bankerSchema = new Schema ({
     A : {
         type : String,
-        // required: true
+        required: true
     },
     B : {
         type : String,
-        // required: true
+        required: true
     },
     C : {
         type : String,
-        // required: true
+        required: true
     },
     pNum : {
         type : Object,
-        // required: true
+        required: true
     },
     allocA : {
         type : Object,
-        // required: true
+        required: true
     },
     allocB : {
         type : Object,
-        // required: true
+        required: true
     },
     allocC : {
         type : Object,
-        // required: true
+        required: true
     },
     maxA : {
         type : Object,
-        // required: true
+        required: true
     },
     maxB : {
         type : Object,
-        // required: true
+        required: true
     },
     maxC : {
         type : Object,
-        // required: true
+        required: true
     },
     remA : {
         type : Object,
-        // required: true
+        required: true
     },
     remB : {
         type : Object,
-        // required: true
+        required: true
     },
     remC : {
         type : Object,
-        // required: true
+        required: true
     },
     availA : {
         type : Object,
-        // required: true
+        required: true
     },
     availB : {
         type : Object,
-        // required: true
+        required: true
     },
     availC : {
         type : Object,
-        // required: true
+        required: true
     },
     isDeadLock : {
         type : Boolean,
-        // required: true
+        required: true
     },
     processSequence : {
         type : Object,
-        // required: true
+        required: true
     },
 })
 

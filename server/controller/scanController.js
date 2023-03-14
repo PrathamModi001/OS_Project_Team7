@@ -1,3 +1,5 @@
+const Scan = require("../models/scan-cScan")
+
 exports.getScan = (req, res, next) => {
   res.render("scan-cScan", {
     title: "Scan / cScan",
@@ -7,7 +9,7 @@ exports.getScan = (req, res, next) => {
 exports.postScan = (req, res, next) => {
   let pId = req.body.pId;
   let tn = req.body.tn;
-  let headpoint = req.body.headpoint;
+  let headpoint = parseInt(req.body.headpoint);
   let Mode = req.body.mode;
   let Direction = req.body.direction;
 
@@ -180,9 +182,22 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
     yAxis.push(i + 1);
   }
 
-  console.log(completed_processes);
-  console.log(xAxis);
-  console.log(yAxis);
+  const newScan = new Scan({
+    pId : pId,
+    trackNum : tn,
+    headPoint : headpoint,
+    mode : mode,
+    direction : Direction, 
+    xAxis : xAxis,
+    yAxis : yAxis,
+    completedProcess : completed_processes
+  })
+  newScan.save()
+  
 
+  // pId , tn , headpoint , mode , direction , xaxis , yaxis , completedProcess
+  // xAxis yAxis Completed Process all objects
+  // pId tn Object 
+  // headpoint mode Direction string 
   //   res.redirect("/");
 };
