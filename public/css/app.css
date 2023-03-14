@@ -196,7 +196,6 @@ a {
 }
 
 .b1 {
-  /* font-family: "Nunito", sans-serif; */
   font-size: 25px;
   border: none;
   background: transparent;
@@ -312,10 +311,19 @@ a {
 }
 
 #myForm .btn{
+  --bs-btn-font-size: 1.1rem;
   --bs-btn-bg:none;
   --bs-btn-color:white;
 }
 
 #myForm .btn:hover{
   --bs-btn-color: #dd2682;
+}
+
+.mode{
+  margin-right: 100px;
+}
+
+.direction{
+  margin-left: 100px;
 }
