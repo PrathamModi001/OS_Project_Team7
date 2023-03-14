@@ -12,6 +12,7 @@ exports.postScan = (req, res, next) => {
   let headpoint = parseInt(req.body.headpoint);
   let Mode = req.body.mode;
   let Direction = req.body.direction;
+  let flag = 1
 
   /*
 WARNING
