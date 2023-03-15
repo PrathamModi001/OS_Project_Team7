@@ -58,7 +58,6 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
       processes.push(new process(parseInt(tn[i]), parseInt(pId[i])));
     }
 
-    console.log(processes);
 
     processes.sort(function (a, b) {
       return a.bt - b.bt;
@@ -192,6 +191,17 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
       yAxis.push(i + 1);
     }
 
+    // function getArray(){
+    //   return fetch("scanController.js")
+    //   .then( response => response.json())
+    //   .then(text => {
+    //     const script = document.createElement('script')
+    //     script.textContent = text
+    //     document.head.appendChild(script)
+    //     return xAxis;
+    //   });
+    // }
+    
     const newScan = new Scan({
       pId: pId,
       trackNum: tn,
@@ -203,12 +213,10 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
       completedProcess: completed_processes,
     });
     newScan.save();
-
-    
-    res.render("scanSolution" , {
+    res.render("random" , {
       title : "Solution",
       completed_processes : completed_processes
-    })
+    });
     // pId , tn , headpoint , mode , direction , xaxis , yaxis , completedProcess
     // xAxis yAxis Completed Process all objects
     // pId tn Object
@@ -218,3 +226,13 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
     res.redirect("/");
   }
 };
+
+exports.getAllScans = async(req,res,next) => {
+  const allScans = await Scan.find({})
+  const currentScan = allScans[allScans.length - 1];
+  res.json({xAxis: currentScan.xAxis , yAxis: currentScan.yAxis})
+}
+
+exports.getScanSolution = (req,res,next) => {
+  
+}

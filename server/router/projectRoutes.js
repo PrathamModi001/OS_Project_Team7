@@ -20,6 +20,9 @@ router.post("/banker's-algo" , bankerController.postBanker)
 /** SCAN C-SCAN */
 router.get("/scan-cScan" , scanController.getScan)
 router.post("/scan-cScan" , scanController.postScan)
+router.get("/allScans", scanController.getAllScans)
+router.get("/scan-solution" , scanController.getScanSolution)
+
 
 /** MRU Page Replacement */
 router.get("/MRU" , projectController.getMRU)
