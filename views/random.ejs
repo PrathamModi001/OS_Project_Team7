@@ -1,21 +1,20 @@
 <%- include('./includes/head.ejs') %>
 
 <body>
-  
   <div class="center">
     <h1 class="headings">SCAN <span>/</span> C-SCAN</h1>
-</div>
+  </div>
 
-<h1 style="color: white;" class="center">Completed Process Sequence</h1>
-<div class="solution-heading">
-<% for (var i=0; i < completed_processes.length; i++) { %>
-    <h1 style="margin: auto 20px; color: white;">
-        <%= completed_processes[i].id %>
+  <h1 style="color: white; text-decoration:underline #dd2682" class="center">Completed Process Sequence</h1>
+  <div class="solution-heading">
+    <% for (var i=0; i < completed_processes.length; i++) { %>
+    <h1 style="margin: 20px 20px auto; color: white">
+      <%= completed_processes[i].id %>
     </h1>
     <% } %>
   </div>
 
-  <canvas id="myChart" style="width: 100%"></canvas>
+  <canvas id="myChart"></canvas>
 
   <script>
     // let xAxis;
@@ -27,16 +26,12 @@
     // import axios from "axios"
 
     let x, y;
-    axios.get("http://localhost:3000/allScans")
+    axios
+      .get("http://localhost:3000/allScans")
 
-      .then(res => {
-        x = res.data
+      .then((res) => {
+        x = res.data;
         // y = res.data
-
-        console.log(res)
-
-
-        console.log(x, y)
 
         const ctx = document.getElementById("myChart");
         new Chart(ctx, {
@@ -45,7 +40,7 @@
             labels: res.data.yAxis,
             datasets: [
               {
-                data:  res.data.xAxis,
+                data: res.data.xAxis,
                 borderWidth: 3,
               },
             ],
@@ -60,6 +55,12 @@
             scales: {
               y: {
                 position: "left",
+                grid: {
+                  display: true,
+                  color: "gray",
+                  // drawOnChartArea: CHART_AREA,
+                  // drawTicks: TICKS,
+                },
                 title: {
                   display: true,
                   text: "Process Number",
@@ -72,6 +73,7 @@
                 position: "top",
                 grid: {
                   display: true,
+                  color: "gray",
                 },
                 title: {
                   display: true,
@@ -85,7 +87,7 @@
           },
         });
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   </script>
   <!-- <table class="charts-css line reverse-data show-labels show-primary-axis show-data-axes">
       <tbody>
@@ -127,4 +129,5 @@
       </tbody>
     </table> -->
 
-    <%- include('./includes/end.ejs') %>
+  <%- include('./includes/end.ejs') %>
+</body>
