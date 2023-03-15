@@ -5,9 +5,11 @@
     <h1 class="headings">DEADLOCK</h1>
   </div>
 <% } else{ %>
+  <div class="solution-heading">
   <% for (var i=0; i < processSequence.length; i++) { %>
     <h1> <%= processSequence[i] %></h1>
     <% } %>
+  </div>
   <% } %>
 
 <%- include('./includes/end.ejs') %>

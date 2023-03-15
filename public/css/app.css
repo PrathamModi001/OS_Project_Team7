@@ -56,6 +56,7 @@ span {
   text-decoration: underline #dd2682 3px;
   text-underline-offset: 7px;
 }
+
 .hyperplexed:hover {
   font-weight: 500;
   font-size: 6rem;
@@ -251,13 +252,16 @@ a {
   min-width: 100%;
   min-height: 100%;
 }
+
 .smallCell {
   margin-left: 20px;
   width: 90px;
 }
+
 .smallCellData {
   width: 90px;
 }
+
 .center {
   text-align: center;
 }
@@ -291,39 +295,44 @@ a {
   width: 15px;
   height: 0;
   border-radius: 10px;
-  background: linear-gradient(
-    to top,
-    #b3487d,
-    #993265,
-    #64163d,
-    #420724,
-    black
-  );
+  background: linear-gradient(to top,
+      #b3487d,
+      #993265,
+      #64163d,
+      #420724,
+      black);
   margin-left: 10px;
 }
 
 /* toggle buttons */
 
-#myForm .btn-outline:checked+.btn{
+#myForm .btn-outline:checked+.btn {
   border-color: #dd2682;
   background-color: #dd2682;
   color: white;
 }
 
-#myForm .btn{
+#myForm .btn {
   --bs-btn-font-size: 1.1rem;
-  --bs-btn-bg:none;
-  --bs-btn-color:white;
+  --bs-btn-bg: none;
+  --bs-btn-color: white;
 }
 
-#myForm .btn:hover{
+#myForm .btn:hover {
   --bs-btn-color: #dd2682;
 }
 
-.mode{
+.mode {
   margin-right: 100px;
 }
 
-.direction{
+.direction {
   margin-left: 100px;
+}
+
+.solution-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto 100px;
 }
