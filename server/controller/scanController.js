@@ -232,7 +232,3 @@ exports.getAllScans = async(req,res,next) => {
   const currentScan = allScans[allScans.length - 1];
   res.json({xAxis: currentScan.xAxis , yAxis: currentScan.yAxis})
 }
-
-exports.getScanSolution = (req,res,next) => {
-  
-}
