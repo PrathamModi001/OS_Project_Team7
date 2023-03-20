@@ -1,9 +1,78 @@
 <%- include('./includes/head.ejs') %>
-    
+
     <div class="center">
         <h1 class="headings">MRU</h1>
     </div>
 
-    <div class="container" ></div>
-    
-<%- include('./includes/end.ejs') %>
+    <div class="container">
+        <div class="container">
+
+
+            <table class=" table table-striped table-dark" style="width: 50rem; margin: 0 auto;">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td scope="col">
+                        Enter Frame:<input type="number" name="quantum" id="quantum" required="required"
+                            class="smallCell" />
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <table class="table table-striped table-dark" id="myTable" style="width: 50rem; margin: 0 auto;">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="3" style="text-align: center">Reference</th>
+                            <th scope="col" rowspan="2" style="vertical-align: middle; width: 11rem">
+                                Delete Row
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="col" colspan="3" style="text-align: center"><input type="number" name="allocA"
+                                    class="smallCellData" id="allocA" required="required" style="text-align: center" />
+                            </th>
+                            <td>
+                                <button onclick="deleteRow(this)" class="delete-button">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </table>
+        </div>
+        <div class="container">
+            <div class="center">
+                <button class="b1" type="button" onclick="addNewReference()">Add Reference</button>
+            </div>
+        </div>
+        <script>
+            function addNewReference() {
+                var table = document.getElementById("myTable");
+                var newRow = table.insertRow(-1); // Add row at the end
+                var pNumCell = newRow.insertCell(0);
+                pNumCell.innerHTML =
+                    '<input type="text" name="quantum" value="" id="quantum" class="smallCell" required="required">';
+
+                var deleteButton = document.createElement("button");
+                deleteButton.classList.add("delete-button");
+                deleteButton.innerHTML = "Delete";
+                deleteButton.onclick = function () {
+                    deleteRow(this);
+                };
+                buttonCell.appendChild(deleteButton);
+            }
+
+            function deleteRow(btn) {
+                var row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        </script>
+    </div>
+
+    <%- include('./includes/end.ejs') %>

@@ -5,6 +5,7 @@ const projectController = require('../controller/projectController')
 const rrController = require('../controller/rrController')
 const bankerController = require("../controller/bankerController")
 const scanController = require("../controller/scanController")
+const mruController = require("../controller/mruController")
 
 /** Project Routes */
 router.get("/" , projectController.getHome)
@@ -22,8 +23,7 @@ router.get("/scan-cScan" , scanController.getScan)
 router.post("/scan-cScan" , scanController.postScan)
 router.get("/allScans", scanController.getAllScans)
 
-
 /** MRU Page Replacement */
-router.get("/MRU" , projectController.getMRU)
+router.get("/mru" , mruController.getMRU)
 
 module.exports = router;

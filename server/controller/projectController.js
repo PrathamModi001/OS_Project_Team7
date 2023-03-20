@@ -8,16 +8,10 @@ exports.getHome = (req,res,next) => {
 }
 
 
-/**GET Scan Page */
-exports.getSCAN = (req,res,next) => {
-    res.render("scan-cScan", {
-        title: "Scan - cScan"
-    })
-}
+// /**GET Scan Page */
+// exports.getSCAN = (req,res,next) => {
+//     res.render("scan-cScan", {
+//         title: "Scan - cScan"
+//     })
+// }
 
-/** GET MRU Page */
-exports.getMRU = (req,res,next) => {
-    res.render("MRU", {
-        title: "MRU"
-    })
-}
