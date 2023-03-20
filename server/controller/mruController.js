@@ -24,7 +24,6 @@ exports.postMRU = (req, res, next) => {
             if (doesExist(pages, refString[i])) {
                 hit++;
                 recentIndex = findIndex(pages, refString[i]);
-                continue;
             } else {
                 pageFault++;
                 pages[recentIndex] = refString[i];
@@ -33,7 +32,6 @@ exports.postMRU = (req, res, next) => {
             if (doesExist(pages, refString[i])) {
                 hit++;
                 recentIndex = findIndex(pages, refString[i]);
-                continue;
             } else {
                 pageFault++;
                 pages[index] = refString[i];
