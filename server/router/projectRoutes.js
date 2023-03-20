@@ -25,5 +25,6 @@ router.get("/allScans", scanController.getAllScans)
 
 /** MRU Page Replacement */
 router.get("/mru" , mruController.getMRU)
+router.post("/mru" , mruController.postMRU)
 
 module.exports = router;
