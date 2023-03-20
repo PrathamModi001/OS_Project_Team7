@@ -1,8 +1,11 @@
-let frame = 4;
+let frame = 8;
 
 let pages = new Array(frame);
+for (let index = 0; index < frame; index++) {
+  pages[index] = -1;
+}
 
-const refString = [0, 1, 1, 2, 3, 4, 3, 3, 1, 0, 2];
+const refString = [0, 1, 1, 2, 3, 4, 3, 3, 1, 0, 2, 5];
 let index = 0;
 let recentIndex;
 let hit = 0;
@@ -30,6 +33,7 @@ for (let i = 0; i < refString.length; i++) {
       index++;
     }
   }
+  console.log(pages);
 }
 
 function doesExist(array, element) {
@@ -50,5 +54,5 @@ function findIndex(array, element) {
   return null;
 }
 
-console.log(pages);
-console.log(hit, pageFault);
+// console.log(pages);
+// console.log(hit, pageFault);
