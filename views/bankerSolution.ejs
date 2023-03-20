@@ -4,19 +4,23 @@
 </div>
 <% if(isDeadLock){ %>
 
-<div class="center">
-  <h1 class="solution-heading">DEADLOCK</h1>
+<div class="center" style="margin-top: 200px">
+  <h1 class="solution-heading" style="color: white; font-size: 70px">
+    DEADLOCK
+  </h1>
 </div>
 <% } else{ %>
-  <h1 style="color: white; text-decoration: underline #dd2682" class="center">
-    Process Sequence
+<h1 style="color: white; text-decoration: underline #dd2682" class="center">
+  Process Sequence
+</h1>
+<div class="solution-heading">
+  <% for (var i=0; i < processSequence.length; i++) { %>
+  <h1 style="margin: 20px 20px auto; color: white">
+    <%= processSequence[i] %>
   </h1>
-  <div class="solution-heading">
-    <% for (var i=0; i < processSequence.length; i++) { %>
-      <h1 style="margin: 20px 20px auto; color: white">
-        <%= processSequence[i] %>
-      </h1>
-      <% } %>
-    </div>
-    <h1 style="color: white; margin-bottom: 50px; font-size: 50px;" class="center">NO DEADLOCK!</h1>
+  <% } %>
+</div>
+<h1 style="color: white; margin-bottom: 50px; font-size: 50px" class="center">
+  NO DEADLOCK!
+</h1>
 <% } %> <%- include('./includes/end.ejs') %>

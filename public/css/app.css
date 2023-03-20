@@ -345,3 +345,17 @@ a {
   margin: auto;
   padding-bottom: 50px;
 }
+/* 
+.dropdown-menu{
+  background-color: black;
+  border-color: white;
+}
+
+.dropdown-menu a{
+  color: white;
+  font-weight: 100;
+}
+
+.dropdown-menu a:hover{
+  font-weight: 600;
+} */
