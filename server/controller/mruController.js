@@ -7,18 +7,21 @@ exports.getMRU = (req, res, next) => {
 
 exports.postMRU = (req, res, next) => {
     let frame = req.body.frame;
+    console.log(frame)
 
+    console.log(req.body.reference)
+
+    let totalPgs = [];
+    let totalPages = [];
     let pages = new Array(frame);
     for (let index = 0; index < frame; index++) {
         pages[index] = -1;
     }
-    let totalPages = [];
 
-
-    const reference = (req.body.reference.split(' '));
-    const refString = reference.map(function(str) {
+    const reference = req.body.reference.split(' ');
+    const refString = reference.map(function(str){
         return parseInt(str);
-    });
+    })
     let index = 0;
     let recentIndex;
     let hit = 0;
@@ -44,9 +47,10 @@ exports.postMRU = (req, res, next) => {
                 index++;
             }
         }
-        totalPages.push(pages);
-        // console.log(totalPages);
+        totalPgs = totalPgs.concat(pages)
+        // console.log(pages)
     }
+    totalPages = createNewArray(totalPgs, frame)
 
     function doesExist(array, element) {
         for (let j = 0; j < array.length; j++) {
@@ -57,6 +61,14 @@ exports.postMRU = (req, res, next) => {
         return false;
     }
 
+    function createNewArray(totalPgs, frame) {
+        const totalPages = [];
+        for (let i = 0; i < totalPgs.length; i += frame) {
+            totalPages.push(totalPgs.slice(i, i + frame));
+        }
+        return totalPages;
+    }
+
     function findIndex(array, element) {
         for (let i = 0; i < array.length; i++) {
             if (array[i] === element) {
@@ -65,12 +77,13 @@ exports.postMRU = (req, res, next) => {
         }
         return null;
     }
-    res.render("MRUsolution" , {
+    // console.log(totalPages);
+    res.render("MRUsolution", {
         title: "MRU-Solution",
-        totalPages : totalPages,
-        hit: hit,
-        pageFault: pageFault,
         refString: refString,
         frame: frame,
+        totalPages: totalPages,
+        hit: hit,
+        pageFault: pageFault
     })
 }
