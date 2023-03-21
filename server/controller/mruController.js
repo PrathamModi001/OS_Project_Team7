@@ -6,14 +6,19 @@ exports.getMRU = (req, res, next) => {
 }
 
 exports.postMRU = (req, res, next) => {
-    let frame = 8;
+    let frame = req.body.frame;
 
     let pages = new Array(frame);
     for (let index = 0; index < frame; index++) {
         pages[index] = -1;
     }
+    let totalPages = [];
 
-    const refString = [0, 1, 1, 2, 3, 4, 3, 3, 1, 0, 2, 5];
+
+    const reference = (req.body.reference.split(' '));
+    const refString = reference.map(function(str) {
+        return parseInt(str);
+    });
     let index = 0;
     let recentIndex;
     let hit = 0;
@@ -39,7 +44,8 @@ exports.postMRU = (req, res, next) => {
                 index++;
             }
         }
-        console.log(pages);
+        totalPages.push(pages);
+        // console.log(totalPages);
     }
 
     function doesExist(array, element) {
@@ -59,4 +65,12 @@ exports.postMRU = (req, res, next) => {
         }
         return null;
     }
+    res.render("MRUsolution" , {
+        title: "MRU-Solution",
+        totalPages : totalPages,
+        hit: hit,
+        pageFault: pageFault,
+        refString: refString,
+        frame: frame,
+    })
 }

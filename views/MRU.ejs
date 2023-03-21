@@ -27,23 +27,26 @@
                     <thead>
                         <tr>
                             <th scope="col" colspan="3" style="text-align: center">Reference</th>
+                            <th scope="col" colspan="3" style="text-align: center"><input type="text" name="reference"
+                                class="smallCellData" id="reference" required="required"
+                                style="text-align: center" />
+                        </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="col" colspan="3" style="text-align: center"><input type="number" name="reference"
-                                    class="smallCellData" id="reference" required="required"
-                                    style="text-align: center" />
-                            </th>
-                        </tr>
-                    </tbody>
                 </table>
             </table>
             <div style="margin: auto; display: flex;">
                 <button type="submit" class="b1" style="margin: auto;">Calculate</button>
-              </div>
+            </div>
         </form>
     </div>
     </div>
-
+<!-- 
+    <script>
+        function separateInputs() {
+            var inputText = document.getElementById("reference").value;
+            var inputsArray = inputText.split(" ");
+            return inputsArray;
+        }
+    </script> -->
     <%- include('./includes/end.ejs') %>
