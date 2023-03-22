@@ -18,7 +18,7 @@ exports.postMRU = (req, res, next) => {
     }
 
     const reference = req.body.reference.split(' ');
-    const refString = reference.map(function(str){
+    const refString = reference.map(function (str) {
         return parseInt(str);
     });
 
@@ -77,9 +77,9 @@ exports.postMRU = (req, res, next) => {
         }
         return null;
     }
-    
+
     console.log(totalPages)
-    
+
     res.render("MRUsolution", {
         title: "MRU-Solution",
         refString: refString,
