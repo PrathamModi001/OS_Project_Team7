@@ -6,22 +6,22 @@ exports.getMRU = (req, res, next) => {
 }
 
 exports.postMRU = (req, res, next) => {
-    let frame = req.body.frame;
-    console.log(frame)
 
-    console.log(req.body.reference)
+    let frame = parseInt(req.body.frame);
+    // console.log(frame)
 
     let totalPgs = [];
     let totalPages = [];
     let pages = new Array(frame);
     for (let index = 0; index < frame; index++) {
-        pages[index] = -1;
+        pages[index] = "-";
     }
 
     const reference = req.body.reference.split(' ');
     const refString = reference.map(function(str){
         return parseInt(str);
-    })
+    });
+
     let index = 0;
     let recentIndex;
     let hit = 0;
@@ -77,7 +77,9 @@ exports.postMRU = (req, res, next) => {
         }
         return null;
     }
-    // console.log(totalPages);
+    
+    console.log(totalPages)
+    
     res.render("MRUsolution", {
         title: "MRU-Solution",
         refString: refString,
