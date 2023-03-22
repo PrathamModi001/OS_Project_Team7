@@ -6,7 +6,7 @@
 
     <div class="container">
         <form action="/mru" method="POST" id="myForm">
-            <table class=" table table-striped table-dark" style="width: 50rem; margin: 0 auto;">
+            <table class=" table table-striped table-dark" style="width: 65rem; margin: 0 auto;">
                 <tr>
                     <td></td>
                     <td></td>
@@ -23,20 +23,27 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <table class="table table-striped table-dark" id="myTable" style="width: 50rem; margin: 0 auto;">
+                <table class="table table-striped table-dark" id="myTable" style="width: 65rem; margin: 0 auto;">
                     <thead>
                         <tr>
-                            <th scope="col" colspan="3" style="text-align: center">Reference</th>
-                            <th scope="col" colspan="3" style="text-align: center"><input type="text" name="reference"
-                                class="smallCellData" id="reference" required="required"
-                                style="text-align: center" />
-                        </th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td scope="col" style="text-align: center">Reference</td> -->
+                            <td scope="col" style="text-align: center"><a style="margin-right: 15px;"> Reference: </a>
+                                <input type="text" name="reference" pattern="[0-9 ]*" inputmode="numeric"
+                                    class="smallCellData" id="reference" required="required"
+                                    placeholder=" e.g. 1 2 3 4 5" style="width: 350px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </thead>
                 </table>
             </table>
             <div style="margin: auto; display: flex;">
-                <button type="submit" class="b1" style="margin: auto;">Calculate</button>
+                <button type="submit" class="b1" style="margin: 15px auto;">Calculate</button>
             </div>
         </form>
     </div>
