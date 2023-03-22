@@ -1,3 +1,5 @@
+const MRU = require("../models/mru")
+
 /** GET MRU Page */
 exports.getMRU = (req, res, next) => {
     res.render("MRU", {
@@ -78,8 +80,15 @@ exports.postMRU = (req, res, next) => {
         return null;
     }
 
-    console.log(totalPages)
-
+    const newMRU = new MRU({
+        refString: refString,
+        frame: frame,
+        hit: hit,
+        pageFault: pageFault,
+        totalPages: totalPages,
+    })
+    newMRU.save();
+    
     res.render("MRUsolution", {
         title: "MRU-Solution",
         refString: refString,
