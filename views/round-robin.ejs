@@ -1,6 +1,6 @@
 <%- include('./includes/head.ejs') %>
 
-  <% var idx=0; %>
+  <% let idx=0; %>
 
     <div class="center">
       <h1 class="headings">ROUND ROBIN</h1>
@@ -33,7 +33,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td style="color: #aaaaaa">
                 P<%= idx %>
               </td>
               <td>
@@ -51,7 +51,7 @@
         </table>
 
         <div style="display: inline; margin: 20px 30px">
-          <button type="button" class="b1" type="button" onclick="addRow(); indexInc();">
+          <button type="button" class="b1" type="button" onclick="addRow();">
             Add Row
           </button>
         </div>
@@ -73,10 +73,6 @@
         });
 
         // the logic for adding a row and the logic for delete row button
-        function indexInc() {
-          idx++;
-        }
-
         function addRow() {
           var table = document.getElementById("myTable");
           var newRow = table.insertRow(-1); // Add row at the end
@@ -85,7 +81,7 @@
           var atCell = newRow.insertCell(2);
           var btCell = newRow.insertCell(3);
           var buttonCell = newRow.insertCell(4);
-          pNameCell.innerHTML = '<td>P<%=idx%></td>';
+          pNameCell.innerHTML = '<td style="color: #aaaaaa">P<%=idx%></td>';
           pIdCell.innerHTML = '<input type="text" name="pId" value="" required="required">';
           atCell.innerHTML = '<input type="text" name="at" value="" required="required">';
           btCell.innerHTML = '<input type="text" name="bt" value="" required="required">';

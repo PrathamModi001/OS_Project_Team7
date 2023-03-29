@@ -1,4 +1,5 @@
-<%- include('./includes/head.ejs') %>
+<%- include('./includes/head.ejs') %> <% let count=0; %> <% let total_tat=0; %>
+<% let total_wt=0; %> <% let timeStamp=0; %>
 
 <div class="center">
   <h1 class="headings">ROUND ROBIN</h1>
@@ -19,9 +20,8 @@
         </tr>
       </thead>
       <tbody>
-        <% let count = 0; %> <% let total_tat = 0; %> <% let total_wt = 0; %> <%
-        for (var i = 0; i < arr.length; i++) { %> <% total_tat = total_tat +
-        arr[i].tat; %> <% total_wt = total_wt + arr[i].wt; %> <% count++ %>
+        <% for (var i=0; i < arr.length; i++) { %> <% total_tat=total_tat +
+        arr[i].tat; %> <% total_wt=total_wt + arr[i].wt; %> <% count++ %>
         <tr>
           <td name="pId" id="pId"><%= arr[i].id %></td>
           <td name="pName" id="pName" style="color: #aaaaaa">P<%= i %></td>
@@ -32,27 +32,50 @@
           <td name="wt" id="wt"><%= arr[i].wt %></td>
         </tr>
         <% } %>
-        <!-- <tr>
+        <table class="table table-striped table-dark">
+          <th scope="col">Quantum</th>
+          <td><%=quantum%></td>
+          <th scope="col">Time Taken</th>
+          <td name="time" id="time"><%= time %></td>
+          <th scope="col">Average Turn Around Time</th>
+          <td name="avg_tat"><%= (total_tat / count).toFixed(2) %></td>
+          <th scope="col">Average Waiting Time</th>
+          <td name="avg_tat"><%= (total_wt / count).toFixed(2) %></td>
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr> -->
+        </table>
       </tbody>
     </table>
-    <table class="table table-striped table-dark">
-      <th scope="col">Time Taken</th>
-      <td name="time" id="time"><%= time %></td>
-      <th scope="col">Average Turn Around Time</th>
-      <td name="avg_tat"><%= (total_tat / count).toFixed(2) %></td>
-      <th scope="col">Average Waiting Time</th>
-      <td name="avg_tat"><%= (total_wt / count).toFixed(2) %></td>
-      <td></td>
-    </table>
   </form>
+</div>
+<h1 style="color: white; text-decoration: underline 3px #dd2682; text-underline-offset: 5px; margin-left:625px; margin-top: 75px; font-size: 50px" >Gantt Chart</h1>
+
+<div
+  class="container"
+  style="
+    height: 175px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    display: flex;
+  "
+>
+  <table class="table table-striped table-dark" >
+    <tr>
+      <td>PName</td>
+      <% for(let i = 0; i<completedId.length; i++){ %>
+        <th colspan="2" style="border-left: 1px solid #787878;"><%=completedId[i]%></th>
+        <% } %>
+    </tr>
+    <tr style="border-bottom: black;">
+      <td style="">Time</td>
+      <% for(let i = 0; i<completedBT.length; i++){ %>
+        <td style="border-left: 1px solid #787878; font-size: 15px; text-align: left; vertical-align: top; height: 100%; padding-top: 5px;"><%=timeStamp%></td>
+        <% timeStamp=timeStamp+completedBT[i]; %>
+        <td style=" font-size: 15px; text-align: right; vertical-align: top; height: 100%; padding-top: 5px;"><%=timeStamp%></td>
+        <% } %>
+    </tr>
+  </table>
 </div>
 
 <%- include('./includes/end.ejs') %>

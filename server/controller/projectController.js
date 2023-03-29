@@ -7,11 +7,3 @@ exports.getHome = (req,res,next) => {
     })
 }
 
-
-// /**GET Scan Page */
-// exports.getSCAN = (req,res,next) => {
-//     res.render("scan-cScan", {
-//         title: "Scan - cScan"
-//     })
-// }
-

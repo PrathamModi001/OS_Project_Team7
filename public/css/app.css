@@ -1,7 +1,7 @@
 body {
   background: black;
   font-family: "Nunito", sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
   /* overflow-y: hidden; */
 }
 
