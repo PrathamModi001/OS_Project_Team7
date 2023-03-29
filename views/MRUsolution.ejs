@@ -4,13 +4,20 @@
         <h1 class="headings">MRU SOLUTION</h1>
     </div>
 
+    <div class="container" style="display: flex; margin-bottom: 20px; text-align: center;">
+        <div style="background-color: red; margin-left: 475px;" class="colorBox"></div>
+        <h3 class="solution-subHeading">Page Fault</h1>
+        <div style="background-color: green; margin-left: 50px;" class="colorBox"></div>
+        <h3 class="solution-subHeading">Hit</h1>
+    </div>
+
     <div class="container" style="text-align: center">
         <table class="table table-striped table-dark" style="border: 1px solid #dd2682;">
             <thead>
                 <tr>
-                    <th style="font-weight: 600">Page</th>
+                    <th style="font-weight: 900; width: 104.98px; font-size: large;">Page</th>
                     <% for (var i=0; i < refString.length; i++) { %>
-                        <th style="font-weight: 600">
+                        <th style="font-weight: 900; font-size: large;">
                             <%= refString[i] %>
                         </th>
                         <% } %>
@@ -21,11 +28,18 @@
             <tbody>
                 <% for (var j=0; j < frame; j++) { %>
                     <tr>
-                        <th style="font-weight: 600; width: 104.98px;">
+                        <th style="font-weight: 600; width: 104.98px; font-size: large;">
                             <%= j+1 %>
                         </th>
                         <% for (var k=0; k < refString.length; k++) { %>
-                            <td>
+                            <% if(didHit[k]===true) { %>
+                            <td style="color: green; font-weight: 900; font-size: large;">
+                                <%= totalPages[k][j] %>
+                                
+                            </td>
+                            <% continue; %>
+                            <% } %>
+                            <td style="color: red; font-weight: 900; font-size: large;">
                                 <%= totalPages[k][j] %>
                             </td>
                             <% } %>
@@ -34,24 +48,18 @@
             </tbody>
         </table>
     </div>
-    <h1 style="color: white; margin: 50px; font-size: 40px" class="center">
-        <a style="
-      text-decoration: underline;
-      text-decoration-color: #dd2682;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 3px;
-      margin-right: 20px;
-    ">Number of Hits:</a>
-        <%= hit %>
-    </h1>
-    <h1 style="color: white; font-size: 40px" class="center">
-        <a style="
-      text-decoration: underline;
-      text-decoration-color: #dd2682;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 3px;
-      margin-right: 20px;
-    ">Number of Page Faults:</a>
-        <%= pageFault %>
-    </h1>
+    <div style="display: inline-flex;">
+    <h3 style="margin: 50px;margin-left: 425px; margin-right: 15px;color: white;" class="center">
+        <a class="solution-subHeading">Hits:</a>
+    <%=hit%>
+     <span style="margin: auto 10px;">/</span>
+    <%= (hit/(hit+pageFault))*100 %>%
+    </h3>
+    <h3 style="margin: 50px;margin-left: 250px; margin-right: 15px; color: white;" class="center">
+        <a class="solution-subHeading">Page Faults:</a>
+    <%=pageFault%>
+    <span style="margin: auto 10px;">/</span>
+    <%= (pageFault/(hit+pageFault))*100 %>%
+    </h3>
+    </div>
     <%- include('./includes/end.ejs') %>

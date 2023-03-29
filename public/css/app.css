@@ -295,18 +295,20 @@ a {
   width: 15px;
   height: 0;
   border-radius: 10px;
-  background: linear-gradient(to top,
-      #b3487d,
-      #993265,
-      #64163d,
-      #420724,
-      black);
+  background: linear-gradient(
+    to top,
+    #b3487d,
+    #993265,
+    #64163d,
+    #420724,
+    black
+  );
   margin-left: 10px;
 }
 
 /* toggle buttons */
 
-#myForm .btn-outline:checked+.btn {
+#myForm .btn-outline:checked + .btn {
   border-color: #dd2682;
   background-color: #dd2682;
   color: white;
@@ -337,7 +339,7 @@ a {
   margin: 0 auto 100px;
 }
 
-#myChart{
+#myChart {
   width: 1154px;
   display: block;
   box-sizing: border-box;
@@ -345,7 +347,27 @@ a {
   margin: auto;
   padding-bottom: 50px;
 }
-/* 
+
+.colorBox {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  border: 1px solid white;
+}
+
+.solution-subHeading {
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: #dd2682;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  margin-right: 20px;
+}
+
+
 .dropdown-menu{
   background-color: black;
   border-color: white;
@@ -358,4 +380,42 @@ a {
 
 .dropdown-menu a:hover{
   font-weight: 600;
+  color: white;
+  background-color: #dd2682;
+}
+
+/* @keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  50%{
+    scale: 1 1.5;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+#blob {
+  background-color: white;
+  height: 250px;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: linear-gradient(to right, aquamarine, mediumpurple);
+  animation: rotate 20s infinite;
+  z-index: -2;
+}
+
+#blur{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    backdrop-filter: blur(130px);
 } */

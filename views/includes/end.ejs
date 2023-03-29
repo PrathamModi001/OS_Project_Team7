@@ -40,6 +40,22 @@ document.querySelector(".hyperplexed").onmouseover = event => {
         $('#progressBar').css('height', scrollPercent + '%');
     })
 </script>
+<!-- <script>
+  const blob = document.getElementById("blob");
+
+document.body.onpointermove = event => {
+  const { clientX, clientY } = event;
+
+    blob.animate({
+        left: `${clientX}px`,
+        top: `${clientY}px`
+    }, {duration: 3000, fill: "forwards"})
+
+  blob.style.left = `${clientX}px`;
+  blob.style.top = `${clientY}px`;
+};
+
+</script> -->
 </body>
 
 </html>
