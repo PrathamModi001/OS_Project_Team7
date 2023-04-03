@@ -344,6 +344,7 @@ a {
 .dropdown-menu {
   background-color: black;
   border-color: white;
+  width: 350px;
 }
 
 .dropdown-menu a {
