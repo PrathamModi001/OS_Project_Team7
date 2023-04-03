@@ -41,4 +41,7 @@ router.post("/mru" , mruController.postMRU)
 /** MRU INFO */
 router.get("/MruInfo" , infoController.getMruInfo)
 
+/** ABOUT US Route */
+router.get("/aboutUs" , infoController.getAboutUs)
+
 module.exports = router;

@@ -21,3 +21,9 @@ exports.getMruInfo = (req, res, next) => {
         title: "MRU Info",
     });
 }
+
+exports.getAboutUs = (req,res,next) => {
+    res.render("aboutUs", {
+        title: "About Us",
+    });
+}
