@@ -4,6 +4,14 @@
     <h1 class="headings">BANKER'S ALGORITHM</h1>
   </div>
 
+  <% if (showMessage) { %>
+    <div id="flash-message"></div>
+    <script src="/js/flashMessage.js"></script>
+    <script>
+      flashMessage('<%= message %>', 5000);
+    </script>
+  <% } %>
+  
   <div class="container" style="text-align: center">
     <form action="/banker's-algo" method="POST" id="myForm">
       <table class="table table-striped table-dark">

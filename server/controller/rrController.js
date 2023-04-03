@@ -4,6 +4,8 @@ const Result = require("../models/table");
 exports.getRoundRobin = (req, res, next) => {
   res.render("round-robin", {
     title: "Round-Robin",
+    showMessage: false,
+    message: ''
   });
 };
 
@@ -187,6 +189,10 @@ exports.postRoundRobin = async (req, res, next) => {
       colors: colors,
     });
   } else {
-    res.redirect("/");
+    res.render("round-robin", {
+      title: "Round-Robin",
+      showMessage: true,
+      message: "2 pIDs Cannot Be Same!"
+    });
   }
 };

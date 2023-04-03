@@ -4,6 +4,8 @@ const Banker = require("../models/banker");
 exports.getBanker = (req, res, next) => {
   res.render("banker", {
     title: "Banker's Algorithm",
+    showMessage: false, 
+    message: ''
   });
 };
 
@@ -258,6 +260,10 @@ exports.postBanker = async (req, res, next) => {
     });
   } else {
     // alert("Enter Different process numbers.")
-    res.redirect("/");
+    res.render("banker", {
+      title: "Round-Robin",
+      showMessage: true,
+      message: "2 pIDs Cannot Be Same!"
+    });
   }
 };

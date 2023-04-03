@@ -3,6 +3,8 @@ const Scan = require("../models/scan-cScan");
 exports.getScan = (req, res, next) => {
   res.render("scan-cScan", {
     title: "Scan / cScan",
+    showMessage: false,
+    message: ''
   });
 };
 
@@ -13,15 +15,6 @@ exports.postScan = (req, res, next) => {
   let Mode = req.body.mode;
   let Direction = req.body.direction;
   let flag = 1
-
-  /*
-WARNING
-add a constraint to headpoint that it can not be greater than any track number
-
-OUTPUT
-sequence from completed_processes array
-graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values from complete_processes[i].bt & y values equal to i+1(i+1 because loops starts from 0) (creating new arrays xAxis and yAxis)
-*/
 
   for (let i = 0; i < pId.length; i++) {
     for (let j = i + 1; j < pId.length; j++) {
@@ -201,7 +194,7 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
     //     return xAxis;
     //   });
     // }
-    
+
     const newScan = new Scan({
       pId: pId,
       trackNum: tn,
@@ -213,9 +206,9 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
       completedProcess: completed_processes,
     });
     newScan.save();
-    res.render("random" , {
-      title : "Solution",
-      completed_processes : completed_processes
+    res.render("random", {
+      title: "Solution",
+      completed_processes: completed_processes
     });
     // pId , tn , headpoint , mode , direction , xaxis , yaxis , completedProcess
     // xAxis yAxis Completed Process all objects
@@ -223,12 +216,16 @@ graph X-axis->BT Y-axis-> numbers (0-completed_processes.length) => x values fro
     // headpoint mode Direction string
     //   res.redirect("/");
   } else {
-    res.redirect("/");
+    res.render("scan-cScan", {
+      title: "Scan / cScan",
+      showMessage: true,
+      message: "2 pIDs Cannot Be Same!"
+    });
   }
 };
 
-exports.getAllScans = async(req,res,next) => {
+exports.getAllScans = async (req, res, next) => {
   const allScans = await Scan.find({})
   const currentScan = allScans[allScans.length - 1];
-  res.json({xAxis: currentScan.xAxis , yAxis: currentScan.yAxis})
+  res.json({ xAxis: currentScan.xAxis, yAxis: currentScan.yAxis })
 }

@@ -37,4 +37,4 @@ const resultSchema = new Schema ({
     result : [processSchema]
 })
 
-module.exports = mongoose.model('RR' , resultSchema)
+module.exports = mongoose.model('Result' , resultSchema)
