@@ -184,6 +184,7 @@ exports.postRoundRobin = async (req, res, next) => {
       quantum: quantum,
       completedId: completedId,
       completedBT: completedBT,
+      colors: colors,
     });
   } else {
     res.redirect("/");

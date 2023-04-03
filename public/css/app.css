@@ -46,9 +46,9 @@ span {
 }
 
 .hyperplexed {
-  font-weight: 300;
-  margin-bottom: 70px;
-  font-size: 5rem;
+  font-weight: 500;
+  margin-bottom: 4.4rem;
+  font-size: 5.2rem;
   /* font-size: clamp(1rem, 10vw, 10rem); */
   color: white;
   padding: 0rem clamp(1rem, 2vw, 13rem);
@@ -60,7 +60,7 @@ span {
 .hyperplexed:hover {
   font-weight: 500;
   font-size: 6rem;
-  margin-bottom: 51px;
+  margin-bottom: 3.45rem;
 }
 
 .headings {
@@ -79,7 +79,7 @@ span {
 .text .subHeadings {
   color: white;
   font-weight: 150;
-  font-size: 3rem;
+  font-size: 2.6rem;
 }
 
 .lead-para {
@@ -207,22 +207,20 @@ a {
   color: #dd2682;
 }
 
-.simulator {
-  font-size: 2rem;
-  color: white;
-  font-weight: 500;
+#sim {
+  font-size: 3.2rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
 }
 
-.simulator:hover {
-  color: #dd2682;
-  /* font-size: 2.2rem; */
-  /* text-decoration: underline; */
+#sim-span:hover{
+  font-size: 3.2rem;
 }
 
 .subHeadings :hover {
   color: #dd2682;
   font-weight: 300;
-  font-size: 3.2rem;
+  font-size: 2.85rem;
 }
 
 #img1 {
@@ -237,7 +235,7 @@ a {
 }
 
 .firstDiv {
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 .landingImage {
@@ -280,30 +278,6 @@ a {
 
 .smallCellText {
   width: 10rem;
-}
-
-/* SCROLLBAR */
-
-::-webkit-scrollbar {
-  width: 0;
-}
-
-#progressBar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 15px;
-  height: 0;
-  border-radius: 10px;
-  background: linear-gradient(
-    to top,
-    #b3487d,
-    #993265,
-    #64163d,
-    #420724,
-    black
-  );
-  margin-left: 10px;
 }
 
 /* toggle buttons */
@@ -367,18 +341,17 @@ a {
   margin-right: 20px;
 }
 
-
-.dropdown-menu{
+.dropdown-menu {
   background-color: black;
   border-color: white;
 }
 
-.dropdown-menu a{
+.dropdown-menu a {
   color: white;
   font-weight: 100;
 }
 
-.dropdown-menu a:hover{
+.dropdown-menu a:hover {
   font-weight: 600;
   color: white;
   background-color: #dd2682;
