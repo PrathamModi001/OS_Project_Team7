@@ -1,5 +1,11 @@
 <%- include('./includes/head.ejs') %>
 
+<style>
+    body{
+      background-image: url("imgs/image.png");
+    }
+  </style>
+
     <div class="center">
         <h1 class="headings">MRU</h1>
     </div>
@@ -17,7 +23,7 @@
                     <td></td>
                     <td></td>
                     <td scope="col">
-                        Enter Frame:<input type="number" name="frame" id="frame" required="required"
+                        Enter Frame:<input type="number" min="1" max="20" name="frame" id="frame" required="required"
                             class="smallCell" />
                     </td>
                     <td></td>

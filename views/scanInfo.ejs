@@ -1,41 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Scan C-Scan</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../css/about.css">
-  </head>
-  <body>
-    <h1 class="headings" style="margin-bottom: 3.5rem">SCAN C-SCAN</h1>
-    <div class="container" style="width: 100rem">
-      <h1 class="sub-headings">SCAN</h1>
-      <p style="color: white; font-size: 1.25rem">
-        It is also called as Elevator Algorithm. In this algorithm, the disk arm
-        moves into a particular direction till the end, satisfying all the
-        requests coming in its path,and then it turns backand moves in the
-        reverse direction satisfying requests coming in its path. It works in
-        the way an elevator works, elevator moves in a direction completely till
-        the last floor of that direction and then turns back.
-      </p>
-      <h1 class="sub-headings" style="margin-top: 3rem;">C-SCAN</h1>
-      <p style="color: white; font-size: 1.25rem">
-        In C-SCAN algorithm, the arm of the disk moves in a particular direction
-        servicing requests until it reaches the last cylinder, then it jumps to
-        the last cylinder of the opposite direction without servicing any
-        request then it turns back and start moving in that direction servicing
-        the remaining requests.
-      </p>
-      <button class="sim-button">Simulator</button>
-    </div>
-  </body>
-</html>
+<%- include('./includes/head.ejs') %>
+<style>
+  body{
+    background-image: url("imgs/image.png");
+  }
+</style>
+
+<h1 class="headings2" style="margin-bottom: 3.5rem">SCAN C-SCAN</h1>
+<div class="container" style="width: 100rem">
+  <h1 class="sub-headings2">SCAN</h1>
+  <p style="color: white; font-size: 1.25rem">
+    It is also called as Elevator Algorithm. In this algorithm, the disk arm
+    moves into a particular direction till the end, satisfying all the requests
+    coming in its path,and then it turns backand moves in the reverse direction
+    satisfying requests coming in its path. It works in the way an elevator
+    works, elevator moves in a direction completely till the last floor of that
+    direction and then turns back.
+  </p>
+  <h1 class="sub-headings2" style="margin-top: 3rem">C-SCAN</h1>
+  <p style="color: white; font-size: 1.25rem">
+    In C-SCAN algorithm, the arm of the disk moves in a particular direction
+    servicing requests until it reaches the last cylinder, then it jumps to the
+    last cylinder of the opposite direction without servicing any request then
+    it turns back and start moving in that direction servicing the remaining
+    requests.
+  </p>
+  <button class="sim-button"><a href="/scan-cScan">Simulator</a></button>
+</div>
+
+<%- include('./includes/end.ejs') %>

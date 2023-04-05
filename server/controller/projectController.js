@@ -6,4 +6,9 @@ exports.getHome = (req,res,next) => {
         title: "Home"
     })
 }
-
+/** Get 404 Page */
+exports.get404 = (req,res,next) => {
+    res.render('get404' , {
+        title: "404 Not Found"
+    })
+}

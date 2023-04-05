@@ -1,5 +1,11 @@
   <%- include('./includes/head.ejs') %>
 
+  <style>
+    body{
+      background-image: url("imgs/image.png");
+    }
+  </style>
+
   <div class="center">
     <h1 class="headings">BANKER'S ALGORITHM</h1>
   </div>
@@ -19,13 +25,13 @@
           <td></td>
           <td></td>
           <td scope="col">
-            Enter A :<input type="number" name="a" id="a" required="required" class="smallCell" />
+            Enter A :<input type="number" min="1" name="a" id="a" required="required" class="smallCell" />
           </td>
           <td scope="col">
-            Enter B :<input type="number" name="b" id="b" required="required" class="smallCell" />
+            Enter B :<input type="number" min="1" name="b" id="b" required="required" class="smallCell" />
           </td>
           <td scope="col">
-            Enter C :<input type="number" name="c" id="c" required="required" class="smallCell" />
+            Enter C :<input type="number" min="1" name="c" id="c" required="required" class="smallCell" />
           </td>
           <td></td>
           <td></td>
@@ -72,23 +78,23 @@
               <input type="number" min="1" max="20" name="pNum" id="pNum" required="required" class="smallCellData" />
             </td>
             <td>
-              <input type="number" name="allocA" class="smallCellData" id="allocA" required="required" />
+              <input type="number" min="0" name="allocA" class="smallCellData" id="allocA" required="required" />
             </td>
             <td>
-              <input type="number" name="allocB" class="smallCellData" id="allocB" required="required" />
+              <input type="number" min="0" name="allocB" class="smallCellData" id="allocB" required="required" />
             </td>
             <td>
-              <input type="number" name="allocC" class="smallCellData" id="allocC" required="required" />
+              <input type="number" min="0" name="allocC" class="smallCellData" id="allocC" required="required" />
             </td>
             <!--  -->
             <td>
-              <input type="number" name="maxA" class="smallCellData" id="maxA" required="required" />
+              <input type="number" min="0" name="maxA" class="smallCellData" id="maxA" required="required" />
             </td>
             <td>
-              <input type="number" name="maxB" class="smallCellData" id="maxB" required="required" />
+              <input type="number" min="0" name="maxB" class="smallCellData" id="maxB" required="required" />
             </td>
             <td>
-              <input type="number" name="maxC" class="smallCellData" id="maxC" required="required" />
+              <input type="number" min="0" name="maxC" class="smallCellData" id="maxC" required="required" />
             </td>
             <td>
               <button onclick="deleteRow(this)" class="delete-button">
@@ -132,19 +138,19 @@
         var maxCCell = newRow.insertCell(6);
         var buttonCell = newRow.insertCell(7);
         pNumCell.innerHTML =
-          '<input type="text" name="pNum" value="" class="smallCellData" required="required">';
+          '<input type="number" min="1" max="20" name="pNum" value="" class="smallCellData" required="required">';
         allocACell.innerHTML =
-          '<input type="text" name="allocA" value="" class="smallCellData" required="required">';
+          '<input type="number" min="0" name="allocA" value="" class="smallCellData" required="required">';
         allocBCell.innerHTML =
-          '<input type="text" name="allocB" value="" class="smallCellData" required="required">';
+          '<input type="number" min="0" name="allocB" value="" class="smallCellData" required="required">';
         allocCCell.innerHTML =
-          '<input type="text" name="allocC" value="" class="smallCellData" required="required">';
+          '<input type="number" min="0" name="allocC" value="" class="smallCellData" required="required">';
         maxACell.innerHTML =
-          '<input type="text" name="maxA" value="" class="smallCellData" required="required">';
+          '<input type="number" min="0" name="maxA" value="" class="smallCellData" required="required">';
         maxBCell.innerHTML =
-          '<input type="text" name="maxB" value="" class="smallCellData" required="required">';
+          '<input type="number" min="0" name="maxB" value="" class="smallCellData" required="required">';
         maxCCell.innerHTML =
-          '<input type="text" name="maxC" value="" class="smallCellData" required="required">';
+          '<input type="number" min="0" name="maxC" value="" class="smallCellData" required="required">';
         var deleteButton = document.createElement("button");
         deleteButton.classList.add("delete-button");
         deleteButton.innerHTML = "Delete";

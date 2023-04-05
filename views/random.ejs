@@ -1,11 +1,34 @@
 <%- include('./includes/head.ejs') %>
+<style>
+  body {
+    background-image: url("imgs/image.png");
+  }
+</style>
 
 <body>
-  <div class="center">
-    <h1 class="headings">SCAN <span>/</span> C-SCAN</h1>
+  <div style="width: 100%; display: inline-flex">
+    <div style="text-align: left; width: 70px">
+      <button
+        style="background: transparent; border: none; margin: 10px 0 0 10px"
+      >
+        <a href="/scan-cScan"
+          ><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFUAAABVCAYAAAA49ahaAAAACXBIWXMAAAsTAAALEwEAmpwYAAAErElEQVR4nO2c32scVRTHr9aqqH0t+iQmc860EUQoPvmj/gJp1UfFFx98Uqvoi9hChck5A2K1tUaxUKS2/ijaWH0q/irVf6CP0dDk3t1osFFBEQvVmNqVMxsxNt2QnZm9P3bvBw5hN8vcO989c3+ce84qFYlEIpFIJBKJRCKRSCQSCZvmSHatRrrHIG0zQK9poAMaeNwAfSZ/5bW8bzB/Uj4nn3fdZ+/4enN2mUn4AQO0TwNPGuRWt6aRvtXAb2rgrXI9NahMJflw2+P4pzJCriDwjwZ47ynIhtSgMJVkIwbpsEY6V6eYywx4QQO918Rsg+pXfrguu8oAjRrg+Z6KeRFxDfLYZLprneonplO6yyDPWhVzmdH3jYQ2q9BpqfE1Gjnr+aO++vH2nAZ6oaWyS1WITIxkl2ugI66F7GCfNK/PrlQhMZnuWmeATngg3kpee3xiJLtGBeOhSF+4Fm1VBvzVVDJ2hQpgDD3qXKxuPBboiNdjrExKxgOhSnjsTuUjslzxZZY33Xor8t8a87uVdxOT83UoV7Xv5m565WrlCxpptweitCob0EvKm718eyvYD6L+1Ug5da2pkuCIczGwTqN3nAo6PZwlvZicNNJZg/SBQTqogX+x66284DRsuBgPrfvGZpvAG/9tQyL7MonYFFYD73Ei6MlN+9fWHmAGnjMbMrywLQP0tGVR55ycIBRHILXeDP08Pcw3XqwtDfyITVELYZG22BcVaF99nkG/NiG7uWNbSB/bF5XfsKto23sma/LQ3wzSLZ3aaQA9Z1vQRfvGqqCLk0f1jgOf0Ui3dmrH9lj6f0+l83ooW29NVAP5vTV0+qwcs3RqQyejj8me3JWoYiv1r35RMX+qoofOG6D7O12/gaOPuha0+OITesKaqBro1UqCJvRgp2sboNsN0JRBNpUN6PeKT9Nua6Ia5LdLdvJ8I6WHbPVTgs8a6Blpt1R/gQ7Y9NSPynWSx611MrT+GuRjJT31eeUAjby95BBwzF4nQ/jml1D23My2pwYypo6v0Sk/G8qYGsjsz2cCmv1p20CsUyF/3Jqo7UznQdhR5XdaEzXu/XtE/0epaELZRnLsbcVTdcklXEVRX3ch6lZbkf8G8sO2RW2kdJ91UeUMpyhasHFGhRWjYt0/OadljWtd1OJmgff24KZmJUFjIE9T/yvbqT87RSP/URSkIR9yce4/g/kNyiUa+H2rN429NjqoXCN1SpKD5F4MrsNL5/VGBuUDBull54JgddNILypfkIIEqVMKWlCgGa/yU4UG5HcEm1IJvCDRMeUjUvhlXAtUymiH8hU5aDPAHwYm6OGWal2ifObkpv1rNfDnYTz2dML7OqqlE5dGOu5ctBVMI38ZTMXf0sq/dja0l4IeDa429YIxdqc3q4KiH7TD+zF01csttBsUWeadQDMG89tUX/4yBdKfdr2z2EKPBTd+dkMj5VQDv9vzIaF9/UPe7OVtcAqyIckfKALT9T7mpyUe6jx8576cnbZIjr2khJcTkybkTEmOQJxF7H1GD2XrpaJZEm7F4zTQW+1fUONPF39BTV7vkf9L3oDVFPJIJBKJRCKRSCQSiUQikYjqCf8AXw6PNjtO85cAAAAASUVORK5CYII="
+        /></a>
+      </button>
+    </div>
+
+    <div class="center" style="width: fit-content; margin-left: 400px">
+      <h1 class="headings" style="margin-top: 50px">SCAN C-SCAN</h1>
+    </div>
   </div>
 
-  <h1 style="color: white; text-decoration:underline #dd2682" class="center">Completed Process Sequence</h1>
+  <h1
+    style="color: white; text-decoration: 2px underline #dd2682"
+    class="center"
+  >
+    Completed Process Sequence
+  </h1>
   <div class="solution-heading">
     <% for (var i=0; i < completed_processes.length; i++) { %>
     <h1 style="margin: 20px 20px auto; color: white">
@@ -17,14 +40,6 @@
   <canvas id="myChart"></canvas>
 
   <script>
-    // let xAxis;
-    // getArray().then(array => {
-    //   xAxis = array
-    // })
-    // console.log(xAxis)
-
-    // import axios from "axios"
-
     axios
       .get("http://localhost:3000/allScans")
 
@@ -56,15 +71,16 @@
                 position: "left",
                 grid: {
                   display: true,
-                  color: "gray",
+                  color: "white",
                   // drawOnChartArea: CHART_AREA,
                   // drawTicks: TICKS,
                 },
                 title: {
                   display: true,
                   text: "Process Number",
+                  color: "white",
                   font: {
-                    size: 20,
+                    size: 25,
                   },
                 },
               },
@@ -72,13 +88,14 @@
                 position: "top",
                 grid: {
                   display: true,
-                  color: "gray",
+                  color: "white",
                 },
                 title: {
                   display: true,
                   text: "Track Number",
+                  color: "white",
                   font: {
-                    size: 20,
+                    size: 25,
                   },
                 },
               },
@@ -88,45 +105,6 @@
       })
       .catch((err) => console.log(err));
   </script>
-  <!-- <table class="charts-css line reverse-data show-labels show-primary-axis show-data-axes">
-      <tbody>
-        <tr>
-          <td style="--start: 0; --size: 0.4">
-            <span class="data"> $ 40K </span>
-          </td>
-        </tr>
-        <tr>
-          <td style="--start: 0.4; --size: 0.2">
-            <span class="data"> $ 20K </span>
-          </td>
-        </tr>
-        <tr>
-          <td style="--start: 0.2; --size: 0.6">
-            <span class="data"> $ 60K </span>
-          </td>
-        </tr>
-        <tr>
-          <td style="--start: 0.6; --size: 0.4">
-            <span class="data"> $ 40K </span>
-          </td>
-        </tr>
-        <tr>
-          <td style="--start: 0.4; --size: 0.8">
-            <span class="data"> $ 80K </span>
-          </td>
-        </tr>
-        <tr>
-          <td style="--start: 0.8; --size: 0.6">
-            <span class="data"> $ 60K </span>
-          </td>
-        </tr>
-        <tr>
-          <td style="--start: 0.6; --size: 1">
-            <span class="data"> $ 100K </span>
-          </td>
-        </tr>
-      </tbody>
-    </table> -->
 
   <%- include('./includes/end.ejs') %>
 </body>

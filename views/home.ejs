@@ -1,57 +1,86 @@
 <%- include('./includes/head.ejs') %>
 
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="../css/app.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="../css/css_reset.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/app.css">
 
-        <title>OS Project Team 7</title>
-    </head>
+  <link rel="stylesheet" href="../css/css_reset.css">
 
-    <body>
-        <div class="container-fluid px-0" id="first" >
-            <div class="row align-items-center firstDiv">
+  <title>OS Project Team 7</title>
+</head>
 
-                <div class="col-md-6 text d-none d-lg-block mt-5">
-                    <section class="text text-center">
-                        <h1 class="hyperplexed" data-value="TEAM/SEVEN">TEAM/SEVEN</h1>
-                        <h2 class="subHeadings" id="sim"><span id="sim-span">——</span>SIMULATIONS<span id="sim-span">——</span></h2>
-                        <h2 class="subHeadings mb-2"><a href="/round-robin"><span>< </span>ROUND ROBIN <span>></span></a> </h2>
-                        <h2 class="subHeadings mb-2"><a href="/banker's-algo"><span>< </span>BANKER'S ALGORITHM </a> <span>></span></h2>
-                        <h2 class="subHeadings mb-2"><a href="/scan-cScan"><span>< </span>SCAN C-SCAN ALGORITHM <span>></span></a></a> </h2>
-                        <h2 class="subHeadings mb-2"><a href="/mru"><span>< </span>MRU PAGE REPLACEMENT <span>></span></a></a> </h2>
-                    </section>
-                </div>
+<body style="overflow: hidden;">
+  <!-- <img src="imgs/image.png" id="img" /> -->
+  <style>
+    /* #img {
+      z-index: -2;
+      opacity: 0.6;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 165%;
+    } */
+    video{
+        z-index: -2;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+  </style>
+  <div class="container-fluid px-0" id="first">
+    <div class="row align-items-center firstDiv">
 
-                <div class="col-lg-6 py-0" id="img1">
-                    
-                    <div class="embed-responsive embed-responsive-21by9">
-                        <video class="embed-responsive-item landingVideo" muted="" autoplay="" loop="" src="imgs/video.mp4" type="video/mp4" width="700" height="850">
+      <div class="col-md-6 text d-none d-lg-block mt-5">
+        <section class="text text-center">
+          <h1 class="hyperplexed" data-value="TEAM/SEVEN">TEAM/SEVEN</h1>
+          <h2 class="subHeadings" id="sim"><span id="sim-span">——</span>SIMULATIONS<span id="sim-span">——</span></h2>
+          <h2 class="subHeadings mb-2"><a href="/round-robin"><span>
+
+                < </span>ROUND ROBIN <span>></span></a> </h2>
+          <h2 class="subHeadings mb-2"><a href="/banker's-algo"><span>
+
+                < </span>BANKER'S ALGORITHM </a> <span>></span></h2>
+          <h2 class="subHeadings mb-2"><a href="/scan-cScan"><span>
+
+                < </span>SCAN C-SCAN ALGORITHM <span>></span></a></a> </h2>
+          <h2 class="subHeadings mb-2"><a href="/mru"><span>
+
+                < </span>MRU PAGE REPLACEMENT <span>></span></a></a> </h2>
+        </section>
+      </div>
+
+      <div class="col-lg-6 py-0" id="img1">
+
+        <div class="embed-responsive embed-responsive-21by9">
+          <video class="embed-responsive-item landingVideo" muted="" autoplay="" loop="" src="imgs/video2.mp4" type="video/mp4">
                         </video>
-                            </div>
-                            <!-- <img class="img-fluid landingImage" src="imgs/hand2.png" alt="OS_Project"> -->
-                </div>
-            </div>
+          <!-- <img src="imgs/video-unscreen.gif" alt="" width="700" height="850"> -->
         </div>
+        <!-- <img class="img-fluid landingImage" src="imgs/hand2.png" alt="OS_Project"> -->
+      </div>
+    </div>
+  </div>
 
 
-        
-        <%- include('./includes/end.ejs') %>
+
+  <%- include('./includes/end.ejs') %>
 
 
-            <!--         
+  <!--         
             <ul class="list-group">
                 <li class="list-group-item">Prasann: 21BCP170</li>
                 <li class="list-group-item">Pratham: 21BCP171</li>

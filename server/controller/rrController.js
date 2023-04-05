@@ -5,14 +5,17 @@ exports.getRoundRobin = (req, res, next) => {
   res.render("round-robin", {
     title: "Round-Robin",
     showMessage: false,
-    message: ''
+    message: "",
   });
 };
 
 exports.postRoundRobin = async (req, res, next) => {
+  //collect all Data from website
   const pId = req.body.pId;
   const at = req.body.at;
   const bt = req.body.bt;
+  let quantum = parseInt(req.body.quantum);
+
   const colors = [
     "#f1d32c",
     "#ff686b",
@@ -23,13 +26,15 @@ exports.postRoundRobin = async (req, res, next) => {
     "#e9ff70",
     "#f763ba",
   ];
-  let quantum = parseInt(req.body.quantum);
-  let flag = 1;
+
+
+  let flag = 1;//Check if any process id is same
   let arr = [];
   let time = 0;
   const completedId = [];
   const completedBT = [];
 
+  //check the process id (if any id is same then it will detect)
   for (let i = 0; i < pId.length; i++) {
     for (let j = i + 1; j < pId.length; j++) {
       if (pId[i] === pId[j]) {
@@ -39,11 +44,11 @@ exports.postRoundRobin = async (req, res, next) => {
     }
   }
 
-  if (flag === 1) {
-    // ACTUAL ALGO:
+  if (flag === 1) {//
 
     let processes = [];
     let alldone = false;
+    //class to create processes and used it to store all process data efficiently
     class process {
       color = "";
       name = "";
@@ -62,6 +67,7 @@ exports.postRoundRobin = async (req, res, next) => {
         this.id = parseInt(id);
         this.done = false;
       }
+      // add process in array
       addTo(array) {
         for (let j = 0; j < array.length; j++) {
           if (this.id > array[j].id) {
@@ -79,6 +85,7 @@ exports.postRoundRobin = async (req, res, next) => {
         }
       }
     }
+
     const temp = [];
 
     for (let i = 0; i < pId.length; i++) {
@@ -92,6 +99,7 @@ exports.postRoundRobin = async (req, res, next) => {
     }
 
     let BT = [];
+    // Arrange processes as per its appearance
     function arrange() {
       let k = 0;
       let idx = 0;
@@ -111,6 +119,7 @@ exports.postRoundRobin = async (req, res, next) => {
       return;
     }
 
+    // check all process are completed or not
     function checkDone(checkArr) {
       for (let x = 0; x < checkArr.length; x++) {
         if (checkArr[x].done === false) {
@@ -120,7 +129,7 @@ exports.postRoundRobin = async (req, res, next) => {
       }
       alldone = true;
     }
-
+    // is process is completed or not
     function isBTzero(Btarr) {
       for (let y = 0; y < Btarr.length; y++) {
         if (Btarr[y].bt !== 0) {
@@ -141,8 +150,15 @@ exports.postRoundRobin = async (req, res, next) => {
         if (isBTzero(arr)) {
           time++;
           i = 0;
-          completedId.push("-");
-          completedBT.push(1);
+          if (completedId[completedId.length - 1] == "-") {
+            completedBT.pop();
+            completedBT.push(time);
+          } else {
+            completedId.push("-");
+            completedBT.push(time);
+          }
+          arrange();
+
           continue;
         } else {
           if (arr[i].done == false) {
@@ -164,6 +180,7 @@ exports.postRoundRobin = async (req, res, next) => {
           }
         }
         arrange();
+
         i = (i + 1) % arr.length;
       }
       for (let i = 0; i < arr.length; i++) {
@@ -171,8 +188,8 @@ exports.postRoundRobin = async (req, res, next) => {
       }
     }
 
-    Roundrobin();
-
+    Roundrobin(); // // time complexity of RR: O(n);
+    // Database connection to MONGODB
     const newTable = new Result({
       result: arr,
     });
@@ -192,7 +209,7 @@ exports.postRoundRobin = async (req, res, next) => {
     res.render("round-robin", {
       title: "Round-Robin",
       showMessage: true,
-      message: "2 pIDs Cannot Be Same!"
+      message: "2 pIDs Cannot Be Same!",
     });
   }
 };

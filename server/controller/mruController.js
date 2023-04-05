@@ -8,9 +8,8 @@ exports.getMRU = (req, res, next) => {
 };
 
 exports.postMRU = (req, res, next) => {
+  //collect all Data from website
   let frame = parseInt(req.body.frame);
-  // console.log(frame)
-
   let totalPgs = [];
   let totalPages = [];
   let pages = new Array(frame);
@@ -23,29 +22,31 @@ exports.postMRU = (req, res, next) => {
     return parseInt(str);
   });
 
+  
+
   let index = 0;
   let recentIndex;
   let didHit = [];
   let hit = 0;
   let pageFault = 0;
-
+  //if exist then  add to array
   for (let i = 0; i < refString.length; i++) {
     if (index === frame) {
       if (doesExist(pages, refString[i])) {
         didHit[i] = true;
         hit++;
         recentIndex = findIndex(pages, refString[i]);
-      } else {
+      } else {//hit not exist then fault +1
         didHit[i] = false;
         pageFault++;
         pages[recentIndex] = refString[i];
       }
-    } else {
+    } else {//hit
       if (doesExist(pages, refString[i])) {
         didHit[i] = true;
         hit++;
         recentIndex = findIndex(pages, refString[i]);
-      } else {
+      } else {//hit not exist then fault +1
         didHit[i] = false;
         pageFault++;
         pages[index] = refString[i];
@@ -54,10 +55,9 @@ exports.postMRU = (req, res, next) => {
       }
     }
     totalPgs = totalPgs.concat(pages);
-    // console.log(pages)
   }
   totalPages = createNewArray(totalPgs, frame);
-
+  //check the page exist or not
   function doesExist(array, element) {
     for (let j = 0; j < array.length; j++) {
       if (array[j] === element) {
@@ -66,7 +66,7 @@ exports.postMRU = (req, res, next) => {
     }
     return false;
   }
-
+  //to get data in proper form
   function createNewArray(totalPgs, frame) {
     const totalPages = [];
     for (let i = 0; i < totalPgs.length; i += frame) {
@@ -74,7 +74,7 @@ exports.postMRU = (req, res, next) => {
     }
     return totalPages;
   }
-
+  //to get index
   function findIndex(array, element) {
     for (let i = 0; i < array.length; i++) {
       if (array[i] === element) {
@@ -84,6 +84,8 @@ exports.postMRU = (req, res, next) => {
     return null;
   }
 
+  // time complexity of MRU: O(n*n);
+  // Database connection to MONGODB
   const newMRU = new MRU({
     refString: refString,
     frame: frame,

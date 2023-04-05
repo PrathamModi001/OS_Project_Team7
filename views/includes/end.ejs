@@ -30,7 +30,17 @@ document.querySelector(".hyperplexed").onmouseover = event => {
   }, 17);
 }
 </script>
-<script type="text/javascript">
+<script>
+  $('.navbar').css('background', 'transparent');
+  $(window).scroll(function() {
+  if ($(window).scrollTop() >= 50) {
+    $('.navbar').css('background', 'black');
+  } else {
+    $('.navbar').css('background', 'transparent');
+  }
+});
+</script>
+<!-- <script type="text/javascript">
     $(window).scrollTop(0);
     $(window).scroll(function(){
         var scroll = $(window).scrollTop(),
@@ -39,7 +49,7 @@ document.querySelector(".hyperplexed").onmouseover = event => {
         scrollPercent = (scroll / (dh-wh))*100;
         $('#progressBar').css('height', scrollPercent + '%');
     })
-</script>
+</script> -->
 <!-- <script>
   const blob = document.getElementById("blob");
 

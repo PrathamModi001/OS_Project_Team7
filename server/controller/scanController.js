@@ -9,13 +9,14 @@ exports.getScan = (req, res, next) => {
 };
 
 exports.postScan = (req, res, next) => {
+  //collect all Data from website
   let pId = req.body.pId;
   let tn = req.body.tn;
   let headpoint = parseInt(req.body.headpoint);
   let Mode = req.body.mode;
   let Direction = req.body.direction;
   let flag = 1
-
+  //check the process id (if any id is same then it will detect)
   for (let i = 0; i < pId.length; i++) {
     for (let j = i + 1; j < pId.length; j++) {
       if (pId[i] === pId[j]) {
@@ -37,7 +38,7 @@ exports.postScan = (req, res, next) => {
 
     let xAxis = [parseInt(initial_head_point)];
     let yAxis = [0];
-
+    //class to create processes and used it to store all process data efficiently
     class process {
       bt = 0;
       id = 0;
@@ -52,12 +53,12 @@ exports.postScan = (req, res, next) => {
     }
 
 
-    processes.sort(function (a, b) {
+    processes.sort(function (a, b) {//complexity nlogn
       return a.bt - b.bt;
     });
 
     switch (mode) {
-      case "scan":
+      case "scan": // to select scan algorithm
         completed_processes = [];
         function check_all_done_scan(processes) {
           if (processes.length == 0) {
@@ -68,7 +69,7 @@ exports.postScan = (req, res, next) => {
         }
 
         switch (initial_direction) {
-          case "Left":
+          case "Left": // to select left mode of simulation in scan
             function find_head_index(processes) {
               if (processes[0].bt >= initial_head_point) {
                 return 0;
@@ -99,7 +100,7 @@ exports.postScan = (req, res, next) => {
               check_all_done_scan(processes);
             }
             break;
-          default:
+          default:  // default right
             function find_head_index_right(processes) {
               for (let i = 0; i < processes.length; i++) {
                 if (processes[i].bt >= initial_head_point) {
@@ -125,7 +126,7 @@ exports.postScan = (req, res, next) => {
             }
         }
         break;
-      default:
+      default: // c scan
         completed_processes = [];
         function check_all_done_cscan(processes) {
           if (processes.length == completed_processes.length) {
@@ -136,7 +137,7 @@ exports.postScan = (req, res, next) => {
         }
 
         switch (initial_direction) {
-          case "Left":
+          case "Left": // to select left mode of simulation in c scan
             function find_head_index(processes) {
               if (processes[0].bt >= initial_head_point) {
                 return 0;
@@ -160,7 +161,7 @@ exports.postScan = (req, res, next) => {
               check_all_done_cscan(processes);
             }
             break;
-          default:
+          default: // default right for  c scan
             function find_head_index_right(processes) {
               for (let i = 0; i < processes.length; i++) {
                 if (processes[i].bt >= initial_head_point) {
@@ -184,17 +185,8 @@ exports.postScan = (req, res, next) => {
       yAxis.push(i + 1);
     }
 
-    // function getArray(){
-    //   return fetch("scanController.js")
-    //   .then( response => response.json())
-    //   .then(text => {
-    //     const script = document.createElement('script')
-    //     script.textContent = text
-    //     document.head.appendChild(script)
-    //     return xAxis;
-    //   });
-    // }
 
+    // Database connection to MONGODB
     const newScan = new Scan({
       pId: pId,
       trackNum: tn,
@@ -210,11 +202,7 @@ exports.postScan = (req, res, next) => {
       title: "Solution",
       completed_processes: completed_processes
     });
-    // pId , tn , headpoint , mode , direction , xaxis , yaxis , completedProcess
-    // xAxis yAxis Completed Process all objects
-    // pId tn Object
-    // headpoint mode Direction string
-    //   res.redirect("/");
+
   } else {
     res.render("scan-cScan", {
       title: "Scan / cScan",

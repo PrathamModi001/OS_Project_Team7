@@ -4,27 +4,27 @@ const Banker = require("../models/banker");
 exports.getBanker = (req, res, next) => {
   res.render("banker", {
     title: "Banker's Algorithm",
-    showMessage: false, 
+    showMessage: false,
     message: ''
   });
 };
 
 /** POST DeadLock */
 exports.postBanker = async (req, res, next) => {
-  let arr = [];
+  let arr = []; //Final Output array
   let index = 0;
   let availableIndex = 0;
-  let flag = 0;
-  let checkDiff = 1;
-  let allNotDone = true;
-  let isDeadLock = false;
+  let flag = 0; //To check DeadLock. We are using this variable to check isDeadLock is true or false 
+  let checkDiff = 1; //Check if any process id is same
+  let allNotDone = true; //All processes are not completed
+  let isDeadLock = false; //deadLock detection
 
   let available = {
     A: 0,
     B: 0,
     C: 0,
   };
-
+  //collect all Data from website
   let processNumArr = req.body.pNum;
 
   const A = req.body.a;
@@ -45,14 +45,6 @@ exports.postBanker = async (req, res, next) => {
   let totalAllocatedB = 0;
   let totalAllocatedC = 0;
 
-  // let AllocatedA = [];
-  // let AllocatedB = [];
-  // let AllocatedC = [];
-
-  // let MaxNeedA = [];
-  // let MaxNeedB = [];
-  // let MaxNeedC = [];
-
   let RemainingNeedA = [];
   let RemainingNeedB = [];
   let RemainingNeedC = [];
@@ -61,6 +53,8 @@ exports.postBanker = async (req, res, next) => {
   let AvailableB = [];
   let AvailableC = [];
 
+
+  //check the process id (if any id is same then it will detect)
   for (let i = 0; i < processNumArr.length; i++) {
     for (let j = i + 1; j < processNumArr.length; j++) {
       if (processNumArr[i] === processNumArr[j]) {
@@ -71,7 +65,7 @@ exports.postBanker = async (req, res, next) => {
   }
   if (checkDiff === 1) {
     //ACTUAL ALGO
-
+    //class to create processes and used it to store all process data efficiently
     class process {
       done = false;
       processNum = 0;
@@ -111,7 +105,7 @@ exports.postBanker = async (req, res, next) => {
         this.processNum = processNum;
       }
     }
-
+    //calculate Remaining Need
     function calculateRemainingNeed(p) {
       p.remainingNeed.A = p.maxNeed.A - p.allocated.A;
       p.remainingNeed.B = p.maxNeed.B - p.allocated.B;
@@ -119,23 +113,7 @@ exports.postBanker = async (req, res, next) => {
       return;
     }
 
-    for (let i = 0; i < processNumArr.length; i++) {
-      let p = new process(
-        AllocatedA[i],
-        AllocatedB[i],
-        AllocatedC[i],
-        MaxNeedA[i],
-        MaxNeedB[i],
-        MaxNeedC[i],
-        processNumArr[i]
-      );
-      calculateRemainingNeed(p);
-      RemainingNeedA[i] = p.remainingNeed.A;
-      RemainingNeedB[i] = p.remainingNeed.B;
-      RemainingNeedC[i] = p.remainingNeed.C;
-      arr.push(p);
-    }
-
+    //calculate Available resources initially 
     function calculateAvailableFirstTime() {
       for (let i = 0; i < processNumArr.length; i++) {
         totalAllocatedA += parseInt(AllocatedA[i]);
@@ -153,7 +131,7 @@ exports.postBanker = async (req, res, next) => {
 
       return;
     }
-
+    //check need of individual process
     function checkNeed(available, remaining_need_process) {
       if (
         parseInt(available.A) >= parseInt(remaining_need_process.A) &&
@@ -164,7 +142,7 @@ exports.postBanker = async (req, res, next) => {
       }
       return false;
     }
-
+    // check all process are completed or not
     function allDone() {
       for (let k = 0; k < arr.length; k++) {
         if (arr[k].done === false) {
@@ -174,7 +152,7 @@ exports.postBanker = async (req, res, next) => {
       allNotDone = false;
       return;
     }
-
+    // calculate Available while executing
     function calculateAvailable(i) {
       available.A += parseInt(AllocatedA[i]);
       available.B += parseInt(AllocatedB[i]);
@@ -185,13 +163,33 @@ exports.postBanker = async (req, res, next) => {
       availableIndex++;
       return;
     }
+
+
+    //pushing all data in "arr" array
+    for (let i = 0; i < processNumArr.length; i++) {
+      let p = new process(
+        AllocatedA[i],
+        AllocatedB[i],
+        AllocatedC[i],
+        MaxNeedA[i],
+        MaxNeedB[i],
+        MaxNeedC[i],
+        processNumArr[i]
+      );
+      calculateRemainingNeed(p);
+      RemainingNeedA[i] = p.remainingNeed.A;
+      RemainingNeedB[i] = p.remainingNeed.B;
+      RemainingNeedC[i] = p.remainingNeed.C;
+      arr.push(p);
+    }
+
     calculateAvailableFirstTime();
 
-    while (allNotDone) {
+    while (allNotDone) { //it will iterate till all processes are not done otherwise deadlock
       if (arr.length === 0) {
         break;
       }
-      if (checkNeed(available, arr[index].remainingNeed) && !arr[index].done) {
+      if (checkNeed(available, arr[index].remainingNeed) && !arr[index].done) { //ckeck remaining need can be fulfilled with available 
         flag = 0;
         calculateAvailable(index);
         processSequence.push(arr[index].processNum);
@@ -209,29 +207,12 @@ exports.postBanker = async (req, res, next) => {
       allDone();
     }
     if (flag === arr.length) {
-      console.log("DEADLOCK");
-      // console.log(processSequence);
       isDeadLock = true;
-    } else {
-      console.log(processSequence);
     }
-    // console.log(flag);
-    // console.log(AvailableA);
-    console.log("BARABAR CHE!!!!");
 
-    console.log(typeof processSequence);
-    console.log(processSequence);
-    // A is of type string
-    // processNumArr is of type object and is storing like [ '4', '2' ]
-    // AllocatedA is of type object and is storing the values of allocated wala A
-    // MaxNeedA is of type object and is storing the values of max wala a
-    // RemainingNeedA is of type object and is storing the value 8 45 when all a b c are 8 45
-    // AvailableA is of type object
-    // isDeadLock is of type boolean
-    // processSequence is of type object but its storing [] nothing.
-
-    // BHAI INN SABKE TYPES DEKH LIYO. GALAT HAI SCHEMA MEIN SABKE TYPES CHANGE KARNE KE HAI! CONSOLE LOG KARKE DEKH EK EK KI KYA TYPE HAI AND MAKE CHANGES ACCORDINGLY.
-
+    
+    // time complexity of Banker: O(n*n*m);
+    // Database connection to MONGODB
     const newBanker = new Banker({
       A: A,
       B: B,
@@ -258,8 +239,8 @@ exports.postBanker = async (req, res, next) => {
       isDeadLock: isDeadLock,
       processSequence: processSequence,
     });
+
   } else {
-    // alert("Enter Different process numbers.")
     res.render("banker", {
       title: "Round-Robin",
       showMessage: true,

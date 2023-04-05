@@ -1,5 +1,11 @@
 <%- include('./includes/head.ejs') %>
 
+<style>
+  body{
+    background-image: url("imgs/image.png");
+  }
+</style>
+
   <% let idx=0; %>
 
     <div class="center">
@@ -23,7 +29,7 @@
             <td></td>
             <td></td>
             <td scope="col">
-              Enter Quantum:<input type="number" name="quantum" id="quantum" required="required" class="smallCell" />
+              Enter Quantum:<input type="number" min="1" max="20" name="quantum" id="quantum" required="required" class="smallCell" />
             </td>
             <td></td>
             <td></td>
@@ -44,8 +50,8 @@
               <td>
                 <input type="number" min="1" max="20" name="pId" id="pId" required="required" style="width: 200px" />
               </td>
-              <td><input type="number" name="at" id="at" required="required" /></td>
-              <td><input type="number" name="bt" id="bt" required="required" /></td>
+              <td><input type="number" min="0" name="at" id="at" required="required" /></td>
+              <td><input type="number" min="1" name="bt" id="bt" required="required" /></td>
               <td>
                 <button onclick="deleteRow(this)" class="delete-button">
                   Delete
@@ -85,9 +91,9 @@
           var atCell = newRow.insertCell(1);
           var btCell = newRow.insertCell(2);
           var buttonCell = newRow.insertCell(3);
-          pIdCell.innerHTML = '<input type="text" name="pId" value="" required="required">';
-          atCell.innerHTML = '<input type="text" name="at" value="" required="required">';
-          btCell.innerHTML = '<input type="text" name="bt" value="" required="required">';
+          pIdCell.innerHTML = '<input type="number" min="1" max="20" name="pId" value="" required="required" style="width:200px">';
+          atCell.innerHTML = '<input type="number" min="0" name="at" value="" required="required">';
+          btCell.innerHTML = '<input type="number" min="1" name="bt" value="" required="required">';
           var deleteButton = document.createElement("button");
           deleteButton.classList.add("delete-button");
           deleteButton.innerHTML = "Delete";

@@ -16,8 +16,12 @@ app.use(cors())
 const MongoDB_URI = "mongodb+srv://modii:pratham@mycluster.l92tp0u.mongodb.net/Team7DB"
 
 const projectRoutes = require("./server/router/projectRoutes")
+const projectController = require('./server/controller/projectController')
 
 app.use(projectRoutes)
+
+// if a route doesnt fall in any of the above routes: then show 404 page: 
+app.use(projectController.get404);
 
 mongoose.set('strictQuery',false);
 mongoose.connect(MongoDB_URI, { useNewUrlParser: true, useUnifiedTopology: true })

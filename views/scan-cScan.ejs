@@ -1,8 +1,23 @@
 <%- include('./includes/head.ejs') %>
 
+
+<style>
+  body{
+    background-image: url("imgs/image.png");
+  }
+</style>
+
 <div class="center">
   <h1 class="headings">SCAN <span>/</span> C-SCAN</h1>
 </div>
+
+<% if (showMessage) { %>
+  <div id="flash-message"></div>
+  <script src="/js/flashMessage.js"></script>
+  <script>
+    flashMessage('<%= message %>', 5000);
+  </script>
+<% } %>
 
 <div class="container" style="text-align: center">
   <form action="/scan-cScan" method="POST" id="myForm">
@@ -15,6 +30,7 @@
           <b>Enter Initial Headpoint:</b>
           <input
             type="number"
+            min="0"
             name="headpoint"
             id="headpoint"
             required="required"
@@ -101,7 +117,7 @@
               style="width: 200px"
             />
           </td>
-          <td><input type="number" name="tn" id="tn" required="required" /></td>
+          <td><input type="number" min="0" name="tn" id="tn" required="required" /></td>
           <td>
             <button onclick="deleteRow(this)" class="delete-button">
               Delete
@@ -141,9 +157,9 @@
       var tnCell = newRow.insertCell(1);
       var buttonCell = newRow.insertCell(2);
       pIdCell.innerHTML =
-        '<input type="text" name="pId" value="" required="required">';
+        '<input type="number" min="1" max="20" name="pId" value="" required="required" style="width:200px">';
       tnCell.innerHTML =
-        '<input type="text" name="tn" value="" required="required">';
+        '<input type="number" min="0" name="tn" value="" required="required">';
       var deleteButton = document.createElement("button");
       deleteButton.classList.add("delete-button");
       deleteButton.innerHTML = "Delete";
