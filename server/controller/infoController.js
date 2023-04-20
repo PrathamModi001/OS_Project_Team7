@@ -28,6 +28,12 @@ exports.getAboutUs = (req,res,next) => {
     });
 }
 
+exports.getBored = (req,res,next) => {
+    res.render("bored" , {
+        title: "Bored?",
+    })
+}
+
 exports.getGameOne = (req,res,next) => {
     res.render("index" , {
         title: "Game-1"

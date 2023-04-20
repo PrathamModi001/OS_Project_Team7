@@ -44,6 +44,9 @@ router.get("/MruInfo" , infoController.getMruInfo)
 /** ABOUT US Route */
 router.get("/aboutUs" , infoController.getAboutUs)
 
+/**GET bored */
+router.get('/bored' , infoController.getBored)
+
 /** GET Game One */
 router.get('/game-1' , infoController.getGameOne)
 
