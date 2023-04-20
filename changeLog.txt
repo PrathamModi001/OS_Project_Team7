@@ -1,3 +1,0 @@
-added the blob but didn't look good so deleted item
-changed the mru solution page
-trying to add the process name in the rr ejs
