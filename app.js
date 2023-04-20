@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
-const MongoDB_URI = "mongodb+srv://modii:pratham@mycluster.l92tp0u.mongodb.net/Team7DB"
+const MongoDB_URI = process.env.MongoDB_URI_ENV
 
 const projectRoutes = require("./server/router/projectRoutes")
 const projectController = require('./server/controller/projectController')
