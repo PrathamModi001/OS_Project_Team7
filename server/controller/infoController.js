@@ -27,3 +27,21 @@ exports.getAboutUs = (req,res,next) => {
         title: "About Us",
     });
 }
+
+exports.getGameOne = (req,res,next) => {
+    res.render("index" , {
+        title: "Game-1"
+    })
+}
+
+exports.getGameTwo = (req,res,next) => {
+    res.render("index2" , {
+        title: "Game-2"
+    })
+}
+
+exports.getGameThree = (req,res,next) => {
+    res.render("index3" , {
+        title: "Game-3"
+    })
+}

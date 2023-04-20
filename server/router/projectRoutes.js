@@ -44,4 +44,13 @@ router.get("/MruInfo" , infoController.getMruInfo)
 /** ABOUT US Route */
 router.get("/aboutUs" , infoController.getAboutUs)
 
+/** GET Game One */
+router.get('/game-1' , infoController.getGameOne)
+
+/** GET Game Two */
+router.get('/game-2' , infoController.getGameTwo)
+
+/**GET Game Three */
+router.get('/game-3' , infoController.getGameThree)
+
 module.exports = router;

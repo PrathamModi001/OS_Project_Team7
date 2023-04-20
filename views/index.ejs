@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Game</title>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+    <div class="game-container">
+        <button class="home" onclick="location.href = '/';">
+          <i class="fa-solid fa-house" style="color: #333"></i>
+        </button>
+      <button id="restartGameButton"><i class="fas fa-sync-alt"></i></button>
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
+      <p><span id="score" class="animated">0</span></p>
+    </div>
+    <div id="game-over">
+      <p style="font-size: 100px;">Game Over</p>
+      <p id="game-over-text"></p>
+      <button id="play-again" onclick="restartGame()">Play Again</button>
+      <button id="exit">Exit</button>
+    </div>
+    <script src="../js/game.js"></script>
+    <script src="https://kit.fontawesome.com/226c829c6f.js" crossorigin="anonymous"></script>
+  </body>
+</html>
