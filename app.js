@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3000
 const bodyParser = require('body-parser')
 const path = require('path')
 const cors = require("cors")
+const helmet = require('helmet');
+const compression = require('compression');
 
 const app = express();
 app.set('layout', './includes/main')
@@ -20,6 +22,9 @@ const projectRoutes = require("./server/router/projectRoutes")
 const projectController = require('./server/controller/projectController')
 
 app.use(projectRoutes)
+
+app.use(helmet());
+app.use(compression());
 
 // if a route doesnt fall in any of the above routes: then show 404 page: 
 app.use(projectController.get404);
